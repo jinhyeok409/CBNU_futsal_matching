@@ -1,0 +1,53 @@
+
+* {
+    /*font-family: 'Hahmlet', serif;*/
+  }
+  
+  body {
+    width: 100%;
+    height: 100%;
+  }
+  
+  html {
+    width: 100%;
+    height: 100%;
+    scroll-snap-type: y mandatory;
+    text-align: center;
+  }
+  
+  section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+  
+  /* navbar design */
+  .navbar {
+    padding: 10px 0;
+    background-color: white !important;
+  }
+  
+  .nav-button {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+  }
+  
+  .nav-button:hover {
+    background-color: #F9FAFB !important;
+  }
+  
+  .nav-logo {
+    font-family: "Lucida Handwriting";
+    font-size: 40px;
+    font-weight: bold;
+    color: rgb(0, 187, 78);
+    /* ΰ      */
+    height: 50px;
+    width: 100px;
+  }
+  
+  .nav-logo:hover {
+    text-decoration: none;
+    color: #1A1F27;
+  }
