@@ -6,24 +6,36 @@
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/font.css" />
     <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" href="css/icon.css" />
     <title>FUTSPOT</title>
   </head>
   <body>
-    <div class="login-wrapper">
-      <h2>MATCHMATE</h2>
-      <form method="post" action="main.html" id="login-form">
-        <input type="text" name="userName" placeholder="Email" />
-        <input
-          type="password"
-          name="userPassword"
-          required
-          placeholder="Password"
-        />
-        <input type="submit" value="로그인" />
-      </form>
-      <div id="signup">
-        <a href="signup.html">회원가입</a>
+    <header>
+      <div id="header-bar">
+        <a href="main.html">
+          <span class="css-cancel"></span>
+        </a>
       </div>
-    </div>
+    </header>
+    <main>
+      <div class="login-wrapper">
+        <img src="img/cbnu_logo.png" id="cbnu_logo_img" alt="" />
+        <h2>MATCHMATE</h2>
+        <form method="post" action="main.html" id="login-form">
+          <input type="text" name="userName" required placeholder="아이디" />
+          <input
+            type="password"
+            name="userPassword"
+            required
+            placeholder="비밀번호"
+          />
+          <input type="submit" value="로그인" />
+        </form>
+        <div id="signup">
+          <a href="signup.html">여기</a>
+          <p>를 눌러 회원가입을 진행하세요</p>
+        </div>
+      </div>
+    </main>
   </body>
 </html>

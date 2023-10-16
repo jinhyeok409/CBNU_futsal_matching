@@ -10,7 +10,6 @@ body{
 }
 
 input{
-    
     font-size: 7px;
     border: 1px solid rgb(229,229,229);
 }
@@ -27,11 +26,16 @@ input{
     background-color: #F8F8F8;
 }
 
-.login-wrapper > h2{
-    font-family: 'KBO-Dia-Gothic_bold';
-    font-size: 34px;
-    color: rgb(146,35,78);
-    margin-bottom: 50px;
+.login-wrapper > span {
+    font-family: 'GmarketSansMedium';
+    font-size: 40px;
+    margin-bottom: 40px;
+}
+
+.login-wrapper label{
+    display: block;
+    margin-bottom: 5px;
+    color: #616161;
 }
 #login-form > input{
     width: 100%;
@@ -62,30 +66,6 @@ input{
     transition: all 0.3s ease;
 }
 
-#signup {
-    width: 100%;
-    border-radius: 6px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#signup a {
-    font-family: 'GmarketSansMedium';
-    color: rgb(146,35,78);
-    font-size: 14px;
-    text-decoration-line: none;
-}
-
-#signup p{
-    font-family: 'GmarketSansMedium';
-}
-
-#cbnu_logo_img{
-    width: 180px;
-    margin-bottom: 50px;
-}
-
 #header-bar{
     background-color:rgb(146,35,78);
     height: 50px;
@@ -95,10 +75,15 @@ input{
     left: 0px;
     display: flex;
     align-items: center;
-    justify-content: left;
+    justify-content: space-between;
 }
 
 #header-bar a {
     padding-left: 5px;
 }
 
+#header-bar h2 {
+    font-family: 'KBO-Dia-Gothic_bold';
+    font-size: 34px;
+    color: #F8F8F8;
+}
