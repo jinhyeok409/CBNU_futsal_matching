@@ -43,80 +43,80 @@ main{
     align-items: center;
 }
 
-#main-left {
-    width: 550px;
-    height: 550px;
+#main-contents {
+    width: 45%;
+    height: 65%;
     background-color: white;
     /*overflow:scroll; 나중에 스크롤 적용*/
 }
 
-#main-middle {
-    width: 300px;
-    height: 550px;
+#main-bar1 {
+    width: 10%;
+    height: 60%;
 }
 
-#main-middle-user a {
+#main-bar1-user a {
     color:white;
 }
 
-#main-middle > div:nth-child(1){
-    width: 300px;
-    height: 200px;
+#main-bar1 > div:nth-child(1){
+    width: 110%;
+    height: 35%;
 }
 
-#main-middle > div:nth-child(2){
-    width: 300px;
-    height: 350px;
+#main-bar1 > div:nth-child(2){
+    width: 110%;
+    height: 65%;
     background-color: royalblue;
 }
-#main-middle-user > div:nth-child(1){
-    width: 300px;
-    height: 150px;
+#main-bar1-user > div:nth-child(1){
+    width: 100%;
+    height: 80%;
     background-color: rgb(255,243,249);
     display: flex;
     align-items: center;
     font-size: 18px;
 }
 
-#main-middle-user > div:nth-child(2){
-    width: 300px;
-    height: 50px;
+#main-bar1-user > div:nth-child(2){
+    width: 100%;
+    height: 25%;
     background-color: brown;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 25px;
+    font-size: 20px;
 }
 
-#main-middle-user > div:nth-child(2):hover{
+#main-bar1-user > div:nth-child(2):hover{
     background-color: rgb(124, 32, 32);
 }
 
-#main-right {
-    width: 200px;
-    height: 550px;
+#main-navbar {
+    width: 10%;
+    height: 60%;
     background-color: rgba(27, 11, 20, 0.65);
     display: flex;
     justify-content: center;
 }
 
-#main-right-list{
+#main-navbar-list{
     margin-top: 15px;
    
 }
 
-#main-right-list li{
+#main-navbar-list li{
     width: 100%;
     padding: 15px;
 }
 
-#main-right-list a {
+#main-navbar-list a {
     text-decoration: none;
     font-size: 20px;
     color: white;
 }
 
-#main-right-list a:hover {
+#main-navbar-list a:hover {
     text-decoration: underline;
 }
 
