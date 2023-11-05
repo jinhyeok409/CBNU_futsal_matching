@@ -22,9 +22,9 @@ a{
 }
 
 #header{
-    width: 100%;
+    width: 207.8vh;
     background-color: rgb(146,35,78);
-    height: 50px;
+    height: 6vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,7 +32,7 @@ a{
 
 #header > h1{
     font-family: 'KBO-Dia-Gothic_bold';
-    font-size: 34px;
+    font-size: 4vh;
     color: white;
 }
 
@@ -44,8 +44,8 @@ main{
 }
 
 #main-contents {
-    width: 45%;
-    height: 65%;
+    width: 60%;
+    height: 80%;
     background-color: white;
     /*overflow:scroll; 나중에 스크롤 적용*/
 }
@@ -53,6 +53,14 @@ main{
 #main-bar1 {
     width: 10%;
     height: 60%;
+}
+
+.weather{
+    margin-top : 1vh;
+    width : 22.8vh;
+    height : 35vh;
+    font-size: 2vh;
+    background-color: aliceblue;
 }
 
 #main-bar1-user a {
@@ -64,11 +72,8 @@ main{
     height: 35%;
 }
 
-#main-bar1 > div:nth-child(2){
-    width: 110%;
-    height: 65%;
-    background-color: royalblue;
-}
+
+
 #main-bar1-user > div:nth-child(1){
     width: 100%;
     height: 80%;
@@ -85,7 +90,7 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 17px;
+    font-size: 2.3vh;
 }
 
 #main-bar1-user > div:nth-child(2):hover{
@@ -101,30 +106,47 @@ main{
 }
 
 #main-navbar-list{
-    margin-top: 15px;
-   
+    margin-top: 3vh;
 }
 
 #main-navbar-list li{
-    width: 100%;
-    padding: 15px;
+    width: 18vh;
+    padding: 1.5vh;
+    padding-bottom : 2vh
 }
 
 #main-navbar-list a {
     text-decoration: none;
-    font-size: 18px;
+    font-size: 3vh;
     color: white;
+    margin-bottom: 1vh;
 }
 
 #main-navbar-list a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 #user-interface {
-    height: 80px;
-    width: 80px;
-    border-radius: 100%;
+    height: 8vh;
+    width: 8vh;
+    border-radius:50vh;
     background-color: gray;
-    margin-left: 10px;
-    margin-right: 15px;
+    margin-left: 1vh;
+    margin-right: 1vh;
+}
+
+.user-interface-dept {
+    font-size: 1.5vh; 
+    margin-bottom: 1vh; 
+    color: gray;
+}
+
+.user-interface-num{
+    font-size: 1.5vh; 
+    margin-bottom: 1vh;
+    color: rgb(201, 201, 201);
+}
+
+.user-interface-name{
+    font-size: 3vh;
 }
