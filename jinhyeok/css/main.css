@@ -43,12 +43,18 @@ main{
     align-items: center;
 }
 
-#main-contents {
+.main-contents{
+    overflow:auto;
     width: 60%;
     height: 80%;
     background-color: white;
+    
+    font-size : 100px;
     /*overflow:scroll; 나중에 스크롤 적용*/
 }
+
+
+
 
 #main-bar1 {
     width: 10%;
@@ -57,11 +63,15 @@ main{
 
 .weather{
     margin-top : 1vh;
-    width : 22.8vh;
+    padding-top : 1vh;
+    padding-left :1vh;
+    width : 21.8vh;
     height : 35vh;
     font-size: 2vh;
     background-color: aliceblue;
 }
+
+
 
 #main-bar1-user a {
     color:white;
@@ -118,7 +128,8 @@ main{
 #main-navbar-list a {
     text-decoration: none;
     font-size: 3vh;
-    color: white;
+    overflow:auto;
+    color: white; 
     margin-bottom: 1vh;
 }
 
