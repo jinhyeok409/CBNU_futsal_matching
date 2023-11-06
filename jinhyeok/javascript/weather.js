@@ -29,9 +29,11 @@ const getJSON = function(url, callback) {
     let feelsLike = document.querySelector('.feels-like');
     let minTemp = document.querySelector('.min-temp');
     let maxTemp = document.querySelector('.max-temp');
+    let mainweather = document.querySelector('.mainweather');
     let icon = document.querySelector('.icon');
     let weatherIcon = data.weather[0].icon;
-  
+
+ 
     let date = new Date();
     let month = date.getMonth() + 1;
     let day = date.getDate();
@@ -39,14 +41,14 @@ const getJSON = function(url, callback) {
     let minutes = date.getMinutes();
   
     location.append(data.name);
-    currentTemp.append (`현재온도 : ${data.main.temp}`);
-    feelsLike.append (`체감온도 : ${data.main.feels_like}`);
-    maxTemp.append (`체감온도 : ${data.main.temp_max}`);
-    minTemp.append (`체감온도 : ${data.main.temp_min}`);
-        
-    //icon.innerHTML = '<img src='http://openweathermap.org/img/wn/${weatherIcon}.png'>';
-  
+    currentTemp.append (`현재온도 : ${data.main.temp-1}°`);
+    feelsLike.append (`체감온도 : ${data.main.feels_like-1}°`);
     currentTime.append (`${month}월 ${day}일 ${hours}시 ${minutes}분`);
+    mainweather.append(data.weather[0].description);
+
+    icon.innerHTML = `<img src = "https://openweathermap.org/img/wn/${weatherIcon}@2x.png" width=50% height=50%>`;
+    
+    location.reload();
     
     
   }
