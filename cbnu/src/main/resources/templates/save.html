@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MATCHMATE</title>
+    <link rel="stylesheet" href="/css/reset.css?after">
+    <link rel="stylesheet" href="/font/font.css?after">
+    <link rel="stylesheet" href="/css/save.css?after">
+    <link rel="stylesheet" href="/css/icon.css?after">
+</head>
+<body>
+<header>
+    <div id="header-bar">
+        <a href="login.html">
+            <span class="css-cancel"></span>
+        </a>
+        <div>
+            <h2>MATCHMATE</h2>
+        </div>
+        <span class="css-cancel hide"></span>
+    </div>
+</header>
+<main>
+    <div class="login-wrapper">
+        <span>회원가입</span>
+        <form method="post" action="/member/save" id="login-form">
+            <label for="name">성명</label>
+            <input type="text" id="name" name="username"> <br>
+
+            <label for="id">아이디</label>
+            <input type="text" id="id" name="userid"> <br>
+
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" name="userpw"> <br>
+
+            <input type="submit" value="회원가입" />
+        </form>
+    </div>
+</main>
+</body>
+</html>
+

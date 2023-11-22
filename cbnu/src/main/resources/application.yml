@@ -1,0 +1,13 @@
+server:
+  port: 8080
+
+
+# database 연동 설정
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/userinfo
+    username: root
+    password: 123456
+
+
