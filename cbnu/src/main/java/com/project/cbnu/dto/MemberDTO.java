@@ -15,5 +15,5 @@ public class MemberDTO {
     private String userid;
     private String userpw;
     private String username;
-    private String userlevel;
+    private Integer userlevel;
 }
