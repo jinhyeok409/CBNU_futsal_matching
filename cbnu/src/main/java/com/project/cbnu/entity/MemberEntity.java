@@ -32,6 +32,7 @@ public class MemberEntity {
         memberEntity.setUserid(memberDTO.getUserid());
         memberEntity.setUserpw(memberDTO.getUserpw());
         memberEntity.setUsername(memberDTO.getUsername());
+        memberEntity.setUserlevel(memberDTO.getUserlevel());
         return memberEntity;
     }
 }

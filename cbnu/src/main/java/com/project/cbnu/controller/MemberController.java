@@ -25,8 +25,12 @@ public class MemberController {
     @PostMapping("/member/save")
     // RequestParam("")안에 들어가는 값은 동일한 name의 input 값을 받아옴
     public String save(@ModelAttribute MemberDTO memberDTO){
+        //회원가입시 기본 레벨 값인 "1"레벨 부여
+        memberDTO.setUserlevel(1);
+
         System.out.println("MemberController.save");
         System.out.println("memberDTO = " + memberDTO);
+
         memberService.save(memberDTO);
         return "login";
     }
@@ -42,11 +46,13 @@ public class MemberController {
         MemberDTO loginResult = memberService.login(memberDTO);
         if (loginResult != null){
             //로그인 성공
-            //로그인 성공한 유저의 id 값을 loginUserid로 저장
+            //로그인 성공한 유저의 userid 값을 loginUserid로 저장
             session.setAttribute("loginUserid", loginResult.getUserid());
-            //로그인 성공한 유저의 id 값을 loginUserName로 저장
-            //현재 구현 불가 Username 값이 Null로 나옴
+            //로그인 성공한 유저의 username 값을 loginUserName로 저장
+            //현재 구현 불가 Username 값이 Null로 나옴 -> 구현완료
             session.setAttribute("loginUsername", loginResult.getUsername());
+            //로그인 성공한 유저의 level값을 loginUserLevel로 저장
+            session.setAttribute("loginUserlevel", loginResult.getUserlevel());
             return "main";
         }
         else{

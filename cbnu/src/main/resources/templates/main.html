@@ -39,7 +39,7 @@
             <div>
                 <div id="user-interface"></div>
                 <div>
-                    <p class="user-interface-dept">소프트웨어학과</p>
+                    <p th:text="${session.loginUserlevel}" class="user-interface-dept">레벨</p>
                     <p th:text="${session.loginUserid}" class="user-interface-num"></p>
                     <p th:text="${session.loginUsername}" class="user-interface-name"></p>
                 </div>
