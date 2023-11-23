@@ -2,6 +2,7 @@ package com.project.cbnu.controller;
 
 import com.project.cbnu.dto.MemberDTO;
 import com.project.cbnu.service.MemberService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,9 +34,21 @@ public class MemberController {
     }
 
     //회원정보 데이터베이스 바탕으로 로그인
-    //@PostMapping("/member/login")
-
-
-
+    @PostMapping("/member/login")
+    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session){
+        MemberDTO loginResult = memberService.login(memberDTO);
+        if (loginResult != null){
+            //로그인 성공
+            //로그인 성공한 유저의 id 값을 loginUserid로 저장
+            session.setAttribute("loginUserid", loginResult.getUserid());
+            //로그인 성공한 유저의 id 값을 loginUserName로 저장
+            session.setAttribute("loginUsername", loginResult.getUsername());
+            return "main";
+        }
+        else{
+            //로그인 실패
+            return "login";
+        }
+    }
 }
 

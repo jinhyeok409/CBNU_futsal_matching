@@ -1,5 +1,6 @@
 package com.project.cbnu.dto;
 
+import com.project.cbnu.entity.MemberEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,4 +17,13 @@ public class MemberDTO {
     private String userpw;
     private String username;
     private Integer userlevel;
+
+    public static MemberDTO toMemberDTO (MemberEntity memberEntity){
+        MemberDTO memberDTO = new MemberDTO();
+        memberDTO.setId(memberEntity.getId());
+        memberDTO.setUserid(memberEntity.getUserid());
+        memberDTO.setUserpw(memberEntity.getUserpw());
+        memberDTO.setUsername(memberDTO.getUsername());
+        return memberDTO;
+    }
 }
