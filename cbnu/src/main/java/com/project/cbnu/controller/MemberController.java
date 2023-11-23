@@ -49,6 +49,7 @@ public class MemberController {
             //로그인 성공한 유저의 id 값을 loginUserid로 저장
             session.setAttribute("loginUserid", loginResult.getUserid());
             //로그인 성공한 유저의 id 값을 loginUserName로 저장
+            //현재 구현 불가 Username 값이 Null로 나옴
             session.setAttribute("loginUsername", loginResult.getUsername());
             return "main";
         }
