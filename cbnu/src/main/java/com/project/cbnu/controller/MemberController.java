@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpSession;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,7 +42,7 @@ public class MemberController {
 
     //회원정보 데이터베이스 바탕으로 로그인
     @PostMapping("/member/login")
-    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session){
+    public String login(MemberDTO memberDTO, Model model, HttpSession session){
         MemberDTO loginResult = memberService.login(memberDTO);
         if (loginResult != null){
             //로그인 성공
@@ -52,8 +53,9 @@ public class MemberController {
             return "main";
         }
         else{
-            //로그인 실패
-            return "login";
+            model.addAttribute("message","로그인에 실패하였습니다.\n아이디 혹은 비밀번호를 확인해주세요.");
+            model.addAttribute("searchUrl","/member/login");//로그인 실패
+            return "test";
         }
     }
 

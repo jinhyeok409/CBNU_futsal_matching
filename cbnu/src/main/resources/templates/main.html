@@ -40,8 +40,8 @@
                 <div id="user-interface"></div>
                 <div>
                     <p class="user-interface-dept">소프트웨어학과</p>
-                    <p class="user-interface-num">2020039056</p>
-                    <p class="user-interface-name">OOO</p>
+                    <p th:text="${session.loginUserid}" class="user-interface-num"></p>
+                    <p th:text="${session.loginUsername}" class="user-interface-name"></p>
                 </div>
             </div>
             <div>
