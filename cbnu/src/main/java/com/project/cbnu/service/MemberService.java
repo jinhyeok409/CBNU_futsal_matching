@@ -39,6 +39,8 @@ public class MemberService {
                 return dto;
             }
             else {
+                // 학번 찾음 but 비밀번호 비일치
+                // 비밀번호 틀림 안내창 구현
                 return null;
             }
         }
