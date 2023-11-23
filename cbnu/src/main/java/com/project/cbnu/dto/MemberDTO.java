@@ -23,7 +23,7 @@ public class MemberDTO {
         memberDTO.setId(memberEntity.getId());
         memberDTO.setUserid(memberEntity.getUserid());
         memberDTO.setUserpw(memberEntity.getUserpw());
-        memberDTO.setUsername(memberDTO.getUsername());
+        memberDTO.setUsername(memberEntity.getUsername());
         return memberDTO;
     }
 }

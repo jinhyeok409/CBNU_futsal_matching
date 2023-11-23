@@ -3,16 +3,12 @@ package com.project.cbnu.controller;
 import com.project.cbnu.dto.MemberDTO;
 import com.project.cbnu.service.MemberService;
 import jakarta.servlet.http.HttpSession;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.sql.SQLOutput;
 
 @Controller
 @RequiredArgsConstructor
@@ -56,7 +52,7 @@ public class MemberController {
         else{
             model.addAttribute("message","로그인에 실패하였습니다.\n아이디 혹은 비밀번호를 확인해주세요.");
             model.addAttribute("searchUrl","/member/login");//로그인 실패
-            return "test";
+            return "loginfail";
         }
     }
 
