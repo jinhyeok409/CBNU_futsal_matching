@@ -3,6 +3,7 @@ package com.project.cbnu.controller;
 import com.project.cbnu.dto.MemberDTO;
 import com.project.cbnu.service.MemberService;
 import jakarta.servlet.http.HttpSession;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +34,11 @@ public class MemberController {
         return "login";
     }
 
+    @GetMapping ("/member/login")
+    public String loginForm() {
+        return "login";
+    }
+
     //회원정보 데이터베이스 바탕으로 로그인
     @PostMapping("/member/login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session){
@@ -50,5 +56,7 @@ public class MemberController {
             return "login";
         }
     }
+
+
 }
 
