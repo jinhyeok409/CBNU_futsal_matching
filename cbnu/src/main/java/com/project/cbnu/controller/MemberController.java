@@ -32,6 +32,9 @@ public class MemberController {
         return "login";
     }
 
+    //회원정보 데이터베이스 바탕으로 로그인
+    @PostMapping("/member/login")
+
 
 
 }
