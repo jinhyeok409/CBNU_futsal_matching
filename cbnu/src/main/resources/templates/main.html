@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MATCHMATE</title>
+    <link rel="stylesheet" href="/css/reset.css?after">
+    <link rel="stylesheet" href="/font/font.css?after">
+    <link rel="stylesheet" href="/css/main.css?after">
+    <link rel="stylesheet" href="/css/icon.css?after">
+</head>
+<body>
+<header id="header">
+    <a href="/member/login"></a>
+    <h1>MATCHMATE</h1>
+</header>
+<main>
+    <div id="main-navbar">
+        <ul id="main-navbar-list">
+            <li>
+                <a href="main.html">
+                    <p>Home</p>
+                </a>
+            </li>
+            <li>
+                <a href="main.html">
+                    <p>Match Info</p>
+                </a>
+            </li>
+            <li>
+                <a href="main.html">
+                    <p>User Manual</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="main-contents"></div>
+    <div id="main-bar1">
+        <div id="main-bar1-user">
+            <div>
+                <div id="user-interface"></div>
+                <div>
+                    <p th:text="${session.loginUserlevel}" class="user-interface-dept">레벨</p>
+                    <p th:text="${session.loginUserid}" class="user-interface-num"></p>
+                    <p th:text="${session.loginUsername}" class="user-interface-name"></p>
+                </div>
+            </div>
+            <div>
+                <a href="login.html"> <p>Logout</p></a>
+            </div>
+        </div>
+        <div class="weather">
+            <section class="weather-container">
+                <div class="weather-data">
+                    <h1 class="location"></h1>
+                    <div class="current-time"></div>
+                </div>
+                <div class="weather-temp">
+                    <div class="current-temp"></div>
+                    <div class="feels-like"></div>
+                    <div class="mainweather"></div>
+                    <div class="icon"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
+</body>
+</html>
+

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MATCHMATE</title>
+    <link rel="stylesheet" href="/css/reset.css?after">
+    <link rel="stylesheet" href="/font/font.css?after">
+    <link rel="stylesheet" href="/css/login.css?after">
+    <link rel="stylesheet" href="/css/icon.css?after">
+</head>
+<body>
+    <header>
+        <div id="header-bar"></div>
+    </header>
+    <main>
+        <div class="login-wrapper">
+            <img src="/img/cbnu_logo.png" id="cbnu_logo_img" alt="" />
+            <h2>MATCHMATE</h2>
+            <form method="post" action="/member/login" id="login-form">
+                <input type="text" name="userid" required placeholder="학번"
+                       minlength="10" maxlength="10"/> <br>
+                <input
+                        type="password"
+                        name="userpw"
+                        required
+                        placeholder="비밀번호"
+                /> <br>
+                <input type="submit" value="로그인" />
+            </form>
+            <div id="signup">
+                <a href="/member/save">여기</a>
+                <p>를 눌러 회원가입을 진행하세요</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+
