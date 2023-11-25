@@ -10,11 +10,11 @@ import lombok.Setter;
 @Getter
 @Table(name = "user")
 public class MemberEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Integer id;
 
-    @Column(unique = true)
+    @Id
     private String userid;
 
     @Column
@@ -26,6 +26,10 @@ public class MemberEntity {
     @Column
     private Integer userlevel;
 
+    @Column
+    private Integer voted;
+
+
     // DTO -> Entity
     public static MemberEntity toMemberEntity(MemberDTO memberDTO) {
         MemberEntity memberEntity = new MemberEntity();
@@ -33,6 +37,12 @@ public class MemberEntity {
         memberEntity.setUserpw(memberDTO.getUserpw());
         memberEntity.setUsername(memberDTO.getUsername());
         memberEntity.setUserlevel(memberDTO.getUserlevel());
+        memberEntity.setVoted(memberDTO.getVoted());
+
+
+
+
+
         return memberEntity;
     }
 }

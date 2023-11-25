@@ -12,19 +12,26 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class MemberDTO {
-    private Integer id;
+    //private Integer id;
     private String userid;
     private String userpw;
     private String username;
     private Integer userlevel;
+    private Integer voted;
 
     public static MemberDTO toMemberDTO (MemberEntity memberEntity){
         MemberDTO memberDTO = new MemberDTO();
-        memberDTO.setId(memberEntity.getId());
+//      memberDTO.setId(memberEntity.getId());
         memberDTO.setUserid(memberEntity.getUserid());
         memberDTO.setUserpw(memberEntity.getUserpw());
         memberDTO.setUsername(memberEntity.getUsername());
         memberDTO.setUserlevel(memberEntity.getUserlevel());
+        // memberDTO.setVoted(memberEntity.getVoted());
+        memberDTO.setVoted(memberEntity.getVoted());
+
+
+
+
         return memberDTO;
     }
 }
