@@ -39,13 +39,13 @@
             <div>
                 <div id="user-interface"></div>
                 <div>
-                    <p th:text="${session.loginUserlevel}" class="user-interface-dept">레벨</p>
+                    <p th:text="|레벨 ${session.loginUserlevel}|" class="user-interface-dept"></p>
                     <p th:text="${session.loginUserid}" class="user-interface-num"></p>
                     <p th:text="${session.loginUsername}" class="user-interface-name"></p>
                 </div>
             </div>
             <div>
-                <a href="login.html"> <p>Logout</p></a>
+                <a href="/member/login"> <p>Logout</p></a>
             </div>
         </div>
         <div class="weather">

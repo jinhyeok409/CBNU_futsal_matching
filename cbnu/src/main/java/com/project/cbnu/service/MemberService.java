@@ -19,9 +19,11 @@ public class MemberService {
         // 2. repository 의 save 메서드 호출
         MemberEntity memberEntity = MemberEntity.toMemberEntity(memberDTO);
         memberRepository.save(memberEntity);
-        //repository 의 save 메서드 호출 ( 조건 entity 객채를 넘겨줘야함 )
+        //repository 의 save 메서드 호출 ( 조건 entity 객체를 넘겨줘야함 )
 
     }
+
+
 
     public MemberDTO login (MemberDTO memberDTO){
         /*
@@ -29,11 +31,14 @@ public class MemberService {
         -> 조회 비밀번호와 사용자 입력 비밀번호 맞는지 판단.
         */
         Optional<MemberEntity> byUserId = memberRepository.findByUserid(memberDTO.getUserid());
+
         if(byUserId.isPresent()){
             // 조회 결과가 있음
             MemberEntity memberEntity = byUserId.get();
             if(memberEntity.getUserpw().equals(memberDTO.getUserpw())){
                 // 비밀번호가 DB와 일치
+
+
                 // entity - dto 변환 후 리턴
                 MemberDTO dto = MemberDTO.toMemberDTO(memberEntity);
                 return dto;

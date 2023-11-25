@@ -1,9 +1,13 @@
 package com.project.cbnu.controller;
 
 import com.project.cbnu.dto.MemberDTO;
+import com.project.cbnu.entity.MemberEntity;
 import com.project.cbnu.service.MemberService;
 import jakarta.servlet.http.HttpSession;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,8 +29,10 @@ public class MemberController {
     @PostMapping("/member/save")
     // RequestParam("")안에 들어가는 값은 동일한 name의 input 값을 받아옴
     public String save(@ModelAttribute MemberDTO memberDTO){
-        //회원가입시 기본 레벨 값인 "1"레벨 부여
+        // 회원가입시 기본 레벨 값인 "1"레벨 부여
         memberDTO.setUserlevel(1);
+        // 회원가입시 누적투표값을 기본 값인 "0"으로 부여
+        memberDTO.setVoted(0);
 
         System.out.println("MemberController.save");
         System.out.println("memberDTO = " + memberDTO);
@@ -35,14 +41,16 @@ public class MemberController {
         return "login";
     }
 
+
+
     @GetMapping ("/member/login")
     public String loginForm() {
         return "login";
     }
 
-    //회원정보 데이터베이스 바탕으로 로그인
+    // 회원정보 데이터베이스 바탕으로 로그인
     @PostMapping("/member/login")
-    public String login(MemberDTO memberDTO, Model model, HttpSession session){
+    public String login(@ModelAttribute MemberDTO memberDTO, Model model, HttpSession session){
         MemberDTO loginResult = memberService.login(memberDTO);
         if (loginResult != null){
             //로그인 성공
@@ -51,8 +59,25 @@ public class MemberController {
             //로그인 성공한 유저의 username 값을 loginUserName로 저장
             //현재 구현 불가 Username 값이 Null로 나옴 -> 구현완료
             session.setAttribute("loginUsername", loginResult.getUsername());
-            //로그인 성공한 유저의 level값을 loginUserLevel로 저장
-            session.setAttribute("loginUserlevel", loginResult.getUserlevel());
+
+
+            // 레벨업
+            if(loginResult.getVoted() >= 20) {
+                int level = loginResult.getUserlevel();
+                level++;
+                memberDTO.setUserlevel(level);
+                memberDTO.setVoted(0);
+
+                System.out.println(memberDTO.getUserlevel());
+                System.out.println(loginResult.getUserlevel());
+
+            }
+            // 로그인 성공한 유저의 level값을 loginUserLevel로 저장
+            session.setAttribute("loginUserlevel", memberDTO.getUserlevel());
+            // 누적투표를 votedcount로 저장
+            session.setAttribute("votedcount", memberDTO.getVoted());
+
+
             return "main";
         }
         else{
@@ -61,7 +86,5 @@ public class MemberController {
             return "loginfail";
         }
     }
-
-
 }
 
