@@ -41,7 +41,10 @@ public class MemberController {
         return "login";
     }
 
-
+    @GetMapping ("/member/main")
+    public String mainForm() {
+        return "main";
+    }
 
     @GetMapping ("/member/login")
     public String loginForm() {
@@ -73,9 +76,9 @@ public class MemberController {
 
             }
             // 로그인 성공한 유저의 level값을 loginUserLevel로 저장
-            session.setAttribute("loginUserlevel", memberDTO.getUserlevel());
+            session.setAttribute("loginUserlevel", loginResult.getUserlevel());
             // 누적투표를 votedcount로 저장
-            session.setAttribute("votedcount", memberDTO.getVoted());
+            session.setAttribute("votedcount", loginResult.getVoted());
 
 
             return "main";
@@ -85,6 +88,12 @@ public class MemberController {
             model.addAttribute("searchUrl","/member/login");//로그인 실패
             return "loginfail";
         }
+    }
+
+    @GetMapping("/member/logout")
+    public String logout(HttpSession session){
+        session.invalidate();
+        return "login";
     }
 }
 
