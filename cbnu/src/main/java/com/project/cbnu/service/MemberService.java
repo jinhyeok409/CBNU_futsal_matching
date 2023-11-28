@@ -18,7 +18,7 @@ public class MemberService {
         // 1. dto -> entity 변환
         // 2. repository 의 save 메서드 호출
         MemberEntity memberEntity = MemberEntity.toMemberEntity(memberDTO);
-        memberRepository.save(memberEntity);
+        memberRepository.saveAndFlush(memberEntity);
         //repository 의 save 메서드 호출 ( 조건 entity 객체를 넘겨줘야함 )
 
     }
@@ -42,6 +42,7 @@ public class MemberService {
                 // entity - dto 변환 후 리턴
                 MemberDTO dto = MemberDTO.toMemberDTO(memberEntity);
                 return dto;
+
             }
             else {
                 // 학번 찾음 but 비밀번호 비일치

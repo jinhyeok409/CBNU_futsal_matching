@@ -37,11 +37,25 @@ public class MemberController {
         System.out.println("MemberController.save");
         System.out.println("memberDTO = " + memberDTO);
 
+        // memberDTO 변경했기 때문에 save(memberDTO) 사용
         memberService.save(memberDTO);
         return "login";
     }
 
+    @GetMapping ("/member/main")
+    public String mainForm() {
+        return "main";
+    }
 
+    @GetMapping ("/member/matchinfo")
+    public String matchinfoForm() {
+        return "matchinfo";
+    }
+
+    @GetMapping ("/member/usermanual")
+    public String usermanualForm() {
+        return "usermanual";
+    }
 
     @GetMapping ("/member/login")
     public String loginForm() {
@@ -65,17 +79,19 @@ public class MemberController {
             if(loginResult.getVoted() >= 20) {
                 int level = loginResult.getUserlevel();
                 level++;
-                memberDTO.setUserlevel(level);
-                memberDTO.setVoted(0);
+                loginResult.setUserlevel(level);
+                loginResult.setVoted(0);
 
                 System.out.println(memberDTO.getUserlevel());
                 System.out.println(loginResult.getUserlevel());
 
             }
-            // 로그인 성공한 유저의 level값을 loginUserLevel로 저장
-            session.setAttribute("loginUserlevel", memberDTO.getUserlevel());
-            // 누적투표를 votedcount로 저장
-            session.setAttribute("votedcount", memberDTO.getVoted());
+                // 로그인 성공한 유저의 level값을 loginUserLevel로 저장
+                session.setAttribute("loginUserlevel", loginResult.getUserlevel());
+                // 누적투표를 votedcount로 저장
+                session.setAttribute("votedcount", loginResult.getVoted());
+                // loginResult를 변경했기 때문에 save(loginResult) 사용
+                memberService.save(loginResult);
 
 
             return "main";
@@ -85,6 +101,12 @@ public class MemberController {
             model.addAttribute("searchUrl","/member/login");//로그인 실패
             return "loginfail";
         }
+    }
+
+    @GetMapping("/member/logout")
+    public String logout(HttpSession session){
+        session.invalidate();
+        return "login";
     }
 }
 
