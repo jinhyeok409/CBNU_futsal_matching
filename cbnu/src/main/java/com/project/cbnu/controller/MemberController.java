@@ -73,13 +73,18 @@ public class MemberController {
 
                 System.out.println(memberDTO.getUserlevel());
                 System.out.println(loginResult.getUserlevel());
+                // 로그인 성공한 유저의 level값을 loginUserLevel로 저장
+                session.setAttribute("loginUserlevel", memberDTO.getUserlevel());
+                // 누적투표를 votedcount로 저장
+                session.setAttribute("votedcount", loginResult.getVoted());
 
             }
-            // 로그인 성공한 유저의 level값을 loginUserLevel로 저장
-            session.setAttribute("loginUserlevel", loginResult.getUserlevel());
-            // 누적투표를 votedcount로 저장
-            session.setAttribute("votedcount", loginResult.getVoted());
-
+            else {
+                // 로그인 성공한 유저의 level값을 loginUserLevel로 저장
+                session.setAttribute("loginUserlevel", loginResult.getUserlevel());
+                // 누적투표를 votedcount로 저장
+                session.setAttribute("votedcount", loginResult.getVoted());
+            }
 
             return "main";
         }
