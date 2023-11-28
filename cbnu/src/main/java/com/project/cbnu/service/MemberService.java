@@ -42,6 +42,7 @@ public class MemberService {
                 // entity - dto 변환 후 리턴
                 MemberDTO dto = MemberDTO.toMemberDTO(memberEntity);
                 return dto;
+
             }
             else {
                 // 학번 찾음 but 비밀번호 비일치
