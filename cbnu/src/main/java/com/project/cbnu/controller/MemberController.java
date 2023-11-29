@@ -78,11 +78,10 @@ public class MemberController {
             if(loginResult.getVoted() >= 20) {
                 int level = loginResult.getUserlevel();
                 level++;
+                //  Userlevel 값 상승
                 loginResult.setUserlevel(level);
+                // Voted 초기화
                 loginResult.setVoted(0);
-
-                System.out.println(memberDTO.getUserlevel());
-                System.out.println(loginResult.getUserlevel());
 
             }
                 // 로그인 성공한 유저의 level값을 loginUserLevel로 저장
@@ -105,7 +104,7 @@ public class MemberController {
     @GetMapping("/member/logout")
     public String logout(HttpSession session){
         session.invalidate();
-        return "login";
+        return "redirect:/";
     }
 
 

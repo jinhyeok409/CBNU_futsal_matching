@@ -39,10 +39,15 @@ function loadWeather(data) {
     let day = date.getDate();
     let hours = date.getHours();
     let minutes = date.getMinutes();
+    data.main.temp = Math.round((data.main.temp)*100)/100.0
+    data.main.fees_like = Math.round((data.main.feels_like)*100)/100.0
 
     location.append(data.name);
-    currentTemp.append (`현재온도 : ${data.main.temp-1}°`);
-    feelsLike.append (`체감온도 : ${data.main.feels_like-1}°`);
+    currentTemp.append (`현재온도 : ${data.main.temp}°`);
+    feelsLike.append (`체감온도 : ${data.main.feels_like}°`);
+
+
+
     currentTime.append (`${month}월 ${day}일 ${hours}시 ${minutes}분`);
     mainweather.append(data.weather[0].description);
 

@@ -14,13 +14,13 @@ import lombok.Setter;
 
 public class MatchEntity {
 
-    @Id
+    @Column
     private Integer gamenum;
 
     //  @Id
     // private Date date;
 
-    @Column
+    @Id
     private String player;
 
     @Column
