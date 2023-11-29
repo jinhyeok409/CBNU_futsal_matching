@@ -57,6 +57,15 @@ public class MemberController {
         return "usermanual";
     }
 
+    @GetMapping ("/member/match1")
+    public String match1Form() {return "match1";}
+
+    @GetMapping ("/member/match2")
+    public String match2Form() {return "match2";}
+
+    @GetMapping ("/javascript/weather")
+    public String weatherForm() {return "main";}
+
     @GetMapping ("/member/login")
     public String loginForm() {
         return "login";
