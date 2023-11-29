@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+// import java.util.Date;
 
 @Entity
 @Setter
@@ -17,8 +17,8 @@ public class MatchEntity {
     @Id
     private Integer gamenum;
 
-    @Id
-    private Date date;
+    //  @Id
+    // private Date date;
 
     @Column
     private String player;
@@ -37,7 +37,7 @@ public class MatchEntity {
     public static MatchEntity toMatchEntity(MatchDTO matchDTO) {
         MatchEntity matchEntity = new MatchEntity();
         matchEntity.setGamenum(matchDTO.getGamenum());
-        matchEntity.setDate(matchDTO.getDate());
+        // matchEntity.setDate(matchDTO.getDate());
         matchEntity.setPlayer(matchDTO.getPlayer());
         matchEntity.setPlayerlevel(matchDTO.getPlayerlevel());
         matchEntity.setTeam(matchDTO.getTeam());

@@ -10,9 +10,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -57,14 +55,6 @@ public class MemberController {
         return "usermanual";
     }
 
-    @GetMapping ("/member/match1")
-    public String match1Form() {return "match1";}
-
-    @GetMapping ("/member/match2")
-    public String match2Form() {return "match2";}
-
-    @GetMapping ("/javascript/weather")
-    public String weatherForm() {return "main";}
 
     @GetMapping ("/member/login")
     public String loginForm() {
@@ -117,5 +107,7 @@ public class MemberController {
         session.invalidate();
         return "login";
     }
+
+
 }
 

@@ -14,9 +14,8 @@ import java.util.Date;
 @NoArgsConstructor
 @ToString
 public class MatchDTO {
-    //private Integer id;
     private Integer gamenum;
-    private Date date;
+    // private Date date;
     private String player;
     private Integer playerlevel;
     private String team;
@@ -24,9 +23,8 @@ public class MatchDTO {
 
     public static MatchDTO toMatchDTO (MatchEntity matchEntity){
         MatchDTO matchDTO = new MatchDTO();
-//      matchDTO.setId(MatchEntity.getId());
         matchDTO.setGamenum(matchEntity.getGamenum());
-        matchDTO.setDate(matchEntity.getDate());
+        //matchDTO.setDate(matchEntity.getDate());
         matchDTO.setPlayer(matchEntity.getPlayer());
         matchDTO.setPlayerlevel(matchEntity.getPlayerlevel());
         matchDTO.setPlayvoted(matchEntity.getPlayvoted());
