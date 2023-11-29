@@ -1,9 +1,11 @@
 package com.project.cbnu.controller;
 
 import com.project.cbnu.service.MatchService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.antlr.v4.runtime.misc.LogManager;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.project.cbnu.dto.MatchDTO;
 import com.project.cbnu.dto.MemberDTO;
@@ -27,16 +29,23 @@ public class MatchController {
     }
 
     @PostMapping("/match/match1")
-    public String match1(@ModelAttribute MatchDTO matchDTO, @ModelAttribute MemberDTO memberDTO) {
+    public String match1(@ModelAttribute MatchDTO matchDTO, @ModelAttribute MemberDTO memberDTO,HttpSession session, Model model) {
         // 받은 데이터를 데이터베이스에 추가하는 로직을 수행합니다.
         // 이 예시에서는 간단하게 로그로 출력합니다.
+
+        Object getPlayername = session.getAttribute("loginUserid");
+        Object getPlayerlevel = session.getAttribute("loginUserlevel");
+        // 객체선언 해서 플레이어 네임을 getPlayername에 변수를 지정하여 넣음
+
         matchDTO.setGamenum(1);
-        matchDTO.setPlayer(memberDTO.getUserid());
+        matchDTO.setPlayer((String) getPlayername);
+        // (String)으로 강제 치환해서 matchDTO에 넣기;
         matchDTO.setTeam("C");
-        matchDTO.setPlayerlevel(memberDTO.getUserlevel());
+        matchDTO.setPlayerlevel((Integer) getPlayerlevel);
         matchDTO.setPlayvoted(0);
 
-        System.out.println(memberDTO.getUserid());
+        System.out.println((String) getPlayername);
+        System.out.println((Integer) getPlayerlevel);
 
 
         matchService.save(matchDTO);
