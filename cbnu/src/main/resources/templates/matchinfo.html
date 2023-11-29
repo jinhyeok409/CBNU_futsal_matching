@@ -5,7 +5,7 @@
     <title>MATCHMATE</title>
     <link rel="stylesheet" href="/css/reset.css?after">
     <link rel="stylesheet" href="/font/font.css?after">
-    <link rel="stylesheet" href="/css/main.css?after">
+    <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/icon.css?after">
     <script src="/javascript/weather.js"></script>
 </head>
@@ -34,13 +34,25 @@
         </ul>
     </div>
     <div class="main-contents">
-
-            <a href ="../match/match1">
-                <p th:text="Match1"></p>
-            </a>
-            <a href ="match2">
-                <p th:text="Match2"></p>
-            </a>
+            <div class="matchform">
+                <div>
+                    <h1>MATCH1</h1>
+                </div>
+                <div>
+                    <a href="../match/match1">
+                    신청하기
+                    </a>
+                </div>
+            </div>
+            <div class="matchform">
+                <div>
+                    <h1>MATCH2</h1>
+                </div>
+                <div>
+                    <a href="../match/match2">
+                    신청하기</a>
+                </div>
+            </div>
     </div>
     <div id="main-bar1">
         <div id="main-bar1-user">

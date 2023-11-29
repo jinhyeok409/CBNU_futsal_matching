@@ -93,7 +93,7 @@ public class MemberController {
                 memberService.save(loginResult);
 
 
-            return "main";
+            return "firstmain";
         }
         else{
             model.addAttribute("message","로그인에 실패하였습니다.\n아이디 혹은 비밀번호를 확인해주세요.");
