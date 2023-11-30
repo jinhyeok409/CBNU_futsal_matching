@@ -27,7 +27,7 @@ public class MatchService {
     }
 
 
-    public MatchDTO matching(MatchDTO matchDTO) {
+    public MatchDTO matchingcount(MatchDTO matchDTO) {
         Optional<MatchEntity> byGamenum = matchRepository.findByGamenum(matchDTO.getGamenum());
 
         MatchEntity matchEntity = byGamenum.get();

@@ -23,6 +23,11 @@ public class MatchController {
         return "match1";
     }
 
+    @GetMapping ("/match/matchresult")
+    public String matchresultForm() {
+        return "matchresult";
+    }
+
     @PostMapping("/match/match1")
     public String match1(@ModelAttribute MatchDTO matchDTO, @ModelAttribute MemberDTO memberDTO,HttpSession session, Object object) {
 
@@ -44,6 +49,8 @@ public class MatchController {
 
 
         return "main";
+
+
 
 
     }

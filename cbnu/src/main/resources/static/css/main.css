@@ -114,6 +114,46 @@ main{
     font-family: 'KBO-Dia-Gothic_bold';
 }
 
+.matching-contents{
+    margin : 8vh;
+}
+.matching-contents li p{
+    font-size: 4vh;
+    margin-top : 2vh;
+    color: black;
+}
+#matching-form > input{
+    width: 150px;
+    height: 50px;
+    padding: 0 10px;
+    margin-right: 8vh;
+    float : right;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    background-color: #F8F8F8;
+}
+#matching-form > input:active{
+    border: blue;
+}
+#matching-form > input::placeholder{
+    color:rgb(110,110,110);
+}
+#matching-form > input[type="submit"]{
+    color: #fff;
+    font-size: 4vh;
+    background-color: rgb(146,35,78);
+    margin-top: 20px;
+
+}
+
+#matching-form > input[type="submit"]:hover{
+    background-color: white;
+    color: rgb(146,35,78);
+    transition: all 0.3s ease;
+}
+
+
 #main-bar1 {
     width: 10%;
     height: 60%;
