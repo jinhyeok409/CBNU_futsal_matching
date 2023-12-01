@@ -23,9 +23,9 @@ public class MatchController {
         return "match1";
     }
 
-    @GetMapping ("/match/matchresult")
+    @GetMapping ("/match/match1result")
     public String matchresultForm() {
-        return "matchresult";
+        return "match1result";
     }
 
     @PostMapping("/match/match1")

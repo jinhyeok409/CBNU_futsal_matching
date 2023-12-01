@@ -15,7 +15,7 @@ import java.util.Date;
 @ToString
 public class MatchDTO {
     private Integer gamenum;
-    // private Date date;
+    private Integer number;
     private String player;
     private Integer playerlevel;
     private String team;
@@ -24,7 +24,7 @@ public class MatchDTO {
     public static MatchDTO toMatchDTO (MatchEntity matchEntity){
         MatchDTO matchDTO = new MatchDTO();
         matchDTO.setGamenum(matchEntity.getGamenum());
-        //matchDTO.setDate(matchEntity.getDate());
+        matchDTO.setNumber(matchEntity.getNumber());
         matchDTO.setPlayer(matchEntity.getPlayer());
         matchDTO.setPlayerlevel(matchEntity.getPlayerlevel());
         matchDTO.setPlayvoted(matchEntity.getPlayvoted());

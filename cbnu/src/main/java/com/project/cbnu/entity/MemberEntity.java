@@ -14,6 +14,7 @@ public class MemberEntity {
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    private Integer id;
 
+
     @Id
     private String userid;
 

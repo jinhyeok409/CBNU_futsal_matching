@@ -1,9 +1,7 @@
 package com.project.cbnu.service;
 
 import com.project.cbnu.dto.MatchDTO;
-import com.project.cbnu.dto.MemberDTO;
 import com.project.cbnu.entity.MatchEntity;
-import com.project.cbnu.entity.MemberEntity;
 import com.project.cbnu.repository.MatchRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
