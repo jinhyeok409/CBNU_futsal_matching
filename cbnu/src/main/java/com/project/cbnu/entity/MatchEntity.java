@@ -2,6 +2,7 @@ package com.project.cbnu.entity;
 
 import com.project.cbnu.dto.MatchDTO;
 import jakarta.persistence.*;
+import lombok.Generated;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,13 +15,14 @@ import lombok.Setter;
 
 public class MatchEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer number;
+
     @Column
     private Integer gamenum;
 
-    //  @Id
-    // private Date date;
-
-    @Id
+    @Column
     private String player;
 
     @Column
@@ -37,7 +39,7 @@ public class MatchEntity {
     public static MatchEntity toMatchEntity(MatchDTO matchDTO) {
         MatchEntity matchEntity = new MatchEntity();
         matchEntity.setGamenum(matchDTO.getGamenum());
-        // matchEntity.setDate(matchDTO.getDate());
+        matchEntity.setNumber(matchDTO.getNumber());
         matchEntity.setPlayer(matchDTO.getPlayer());
         matchEntity.setPlayerlevel(matchDTO.getPlayerlevel());
         matchEntity.setTeam(matchDTO.getTeam());

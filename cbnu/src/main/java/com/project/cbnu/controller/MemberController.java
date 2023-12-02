@@ -86,12 +86,12 @@ public class MemberController {
                 loginResult.setVoted(0);
 
             }
-                // 로그인 성공한 유저의 level값을 loginUserLevel로 저장
-                session.setAttribute("loginUserlevel", loginResult.getUserlevel());
-                // 누적투표를 votedcount로 저장
-                session.setAttribute("votedcount", loginResult.getVoted());
-                // loginResult를 변경했기 때문에 save(loginResult) 사용
-                memberService.save(loginResult);
+            // 로그인 성공한 유저의 level값을 loginUserLevel로 저장
+            session.setAttribute("loginUserlevel", loginResult.getUserlevel());
+            // 누적투표를 votedcount로 저장
+            session.setAttribute("votedcount", loginResult.getVoted());
+            // loginResult를 변경했기 때문에 save(loginResult) 사용
+            memberService.save(loginResult);
 
 
             return "firstmain";
@@ -111,4 +111,3 @@ public class MemberController {
 
 
 }
-
