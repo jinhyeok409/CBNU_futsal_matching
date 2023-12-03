@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface MatchRepository extends JpaRepository<MatchEntity, Integer> {
-    // 학번으로 회원가입 조회
-    Optional<MatchEntity> findByGamenum (Integer gamenum);
+    // Number로 Matching DB 탐색
+    Optional<MatchEntity> findByNumber (Integer number);
+    Optional<MatchEntity> findByPlayer (String player);
 }
