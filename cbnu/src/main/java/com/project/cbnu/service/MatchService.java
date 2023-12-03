@@ -30,7 +30,7 @@ public class MatchService {
     }
 
 
-    public MatchDTO MatchingSubmit(MatchDTO matchDTO, String UserId) {
+    public MatchDTO MatchingSubmit(MatchDTO matchDTO, String UserId, Integer MatchNumber) {
 
 
         Optional<MatchEntity> byPlayer = matchRepository.findByPlayer(UserId);
@@ -38,7 +38,7 @@ public class MatchService {
 
         if (byPlayer.isPresent()) {
             MatchEntity matchEntity = byPlayer.get();
-            if (matchEntity.getGamenum().equals(1)) {
+            if (matchEntity.getGamenum().equals(MatchNumber)) {
                 System.out.println("이미존재");
 
                 MatchDTO dto = MatchDTO.toMatchDTO(matchEntity);

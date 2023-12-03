@@ -19,10 +19,10 @@ public class ListEntity {
     private Integer gamelist;
 
     @Column
-    private Integer min;
+    private Integer listmin;
 
     @Column
-    private Integer max;
+    private Integer listmax;
 
     @Column
     private Integer participant;
@@ -43,8 +43,8 @@ public class ListEntity {
     public static ListEntity toListEntity(ListDTO listDTO) {
         ListEntity listEntity = new ListEntity();
         listEntity.setGamelist(listDTO.getGamelist());
-        listEntity.setMin(listDTO.getMin());
-        listEntity.setMax(listDTO.getMax());
+        listEntity.setListmax(listDTO.getListmax());
+        listEntity.setListmin(listDTO.getListmin());
         listEntity.setParticipant(listDTO.getParticipant());
         listEntity.setSubmitend(listDTO.getSubmitend());
         listEntity.setVotingend(listDTO.getVotingend());

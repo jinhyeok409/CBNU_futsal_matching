@@ -1,6 +1,7 @@
 package com.project.cbnu.controller;
 
 import com.project.cbnu.service.MatchService;
+import com.project.cbnu.service.ListService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.antlr.v4.runtime.misc.LogManager;
@@ -9,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.project.cbnu.dto.MatchDTO;
 import com.project.cbnu.dto.MemberDTO;
+import com.project.cbnu.dto.ListDTO;
 
 @Controller
 @RequiredArgsConstructor
@@ -16,12 +18,13 @@ public class MatchController {
 
     //생성자 주입
     private final MatchService matchService;
+    private final ListService listService;
+    Integer MatchNumber = 1;
 
     //회원가입 페이지 출력 요청
     @GetMapping ("/match/match1")
-    public String match1Form() {
-        return "match1";
-    }
+    public String match1Form(){return "match1";} ;
+
 
     @GetMapping ("/match/match1result")
     public String matchresultForm() {
@@ -29,14 +32,17 @@ public class MatchController {
     }
 
     @PostMapping("/match/match1")
-    public String match1(@ModelAttribute MatchDTO matchDTO, @ModelAttribute MemberDTO memberDTO,HttpSession session, Object object, Model model) {
+    public String match1(@ModelAttribute MatchDTO matchDTO, @ModelAttribute MemberDTO memberDTO,@ModelAttribute ListDTO listDTO, HttpSession session, Object object, Model model) {
 
         Object getPlayername = session.getAttribute("loginUserid");
         Object getPlayerlevel = session.getAttribute("loginUserlevel");
         // 객체선언 해서 플레이어 네임을 getPlayername에 변수를 지정하여 넣음
 
+        session.setAttribute("participant", listService.ListCount(listDTO, MatchNumber).getParticipant());
 
-        MatchDTO SubmitResult = matchService.MatchingSubmit(matchDTO, (String) getPlayername);
+
+
+        MatchDTO SubmitResult = matchService.MatchingSubmit(matchDTO, (String) getPlayername, MatchNumber);
 
         if(SubmitResult!=null){
             System.out.println("등록불가");
@@ -51,7 +57,7 @@ public class MatchController {
         else {
             System.out.println("다음");
 
-            matchDTO.setGamenum(1);
+            matchDTO.setGamenum(MatchNumber);
             matchDTO.setPlayer((String) getPlayername);
             // (String)으로 강제 치환해서 matchDTO에 넣기;
             matchDTO.setTeam("non");
@@ -63,6 +69,12 @@ public class MatchController {
             model.addAttribute("message","매칭 신청이 완료되었습니다.");
             model.addAttribute("searchUrl","/member/main");
             // 신청성공
+
+            ListDTO CountResult = listService.ListCount(listDTO, MatchNumber);
+            int count = CountResult.getParticipant();
+            count++;
+            CountResult.setParticipant(count);
+            listService.save(CountResult);
 
             return "loginfail";
         }

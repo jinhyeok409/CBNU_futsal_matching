@@ -42,7 +42,7 @@
                     <p>시간 : 12월 01일 (금) 12:00 ~ 14:00</p>
             </li>
             <li>
-                    <p>주의사항 :  </p>
+                <p th:text="|현재인원 : ${session.participant}명|"></p>
             </li>
         </ul>
         <form method="post" action="/match/match1" id ="matching-form">

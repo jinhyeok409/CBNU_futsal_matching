@@ -34,9 +34,7 @@ public class ListController {
         Object getPlayerlevel = session.getAttribute("loginUserlevel");
         // 객체선언 해서 플레이어 네임을 getPlayername에 변수를 지정하여 넣음
 
-        listDTO.setMin((Integer) 10);
 
-        listService.save(listDTO);
 
 
         return "main";
