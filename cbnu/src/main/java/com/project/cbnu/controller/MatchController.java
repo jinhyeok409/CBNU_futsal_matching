@@ -20,18 +20,18 @@ public class MatchController {
     private final MatchService matchService;
     private final ListService listService;
     Integer MatchNumber ;
+    @GetMapping ("/match/match1result")
+    public String matchresultForm() {
+        return "match1result";
+    }
 
     //회원가입 페이지 출력 요청
     @GetMapping ("/match/match1")
     public String match1Form(@ModelAttribute MemberService memberService, @ModelAttribute MemberDTO memberDTO,@ModelAttribute ListDTO listDTO, Model model, HttpSession session){
-        Integer MatchNumber = 1;
-        session.setAttribute("participant", listService.ListCount(listDTO, MatchNumber).getParticipant());
+        MatchNumber = 1;
 
 
-
-
-
-        if(listService.ListCount(listDTO, MatchNumber).getParticipant() == 9)
+        if(listService.ListLoad(MatchNumber).getParticipant() == 9)
         {
             model.addAttribute("message","매칭신청이 마감되었습니다.");
             model.addAttribute("searchUrl","/member/main");
@@ -39,16 +39,12 @@ public class MatchController {
             return "loginfail";
         }
 
-
-        session.setAttribute("listmin", listService.ListCount(listDTO, MatchNumber).getListmin());
-        session.setAttribute("listmax", listService.ListCount(listDTO, MatchNumber).getListmax());
+        session.setAttribute("participant", listService.ListLoad(MatchNumber).getParticipant());
+        session.setAttribute("listmin", listService.ListLoad(MatchNumber).getListmin());
+        session.setAttribute("listmax", listService.ListLoad(MatchNumber).getListmax());
         return "match1";
     }
 
-    @GetMapping ("/match/match1result")
-    public String matchresultForm() {
-        return "match1result";
-    }
 
     @PostMapping("/match/match1")
     public String match1(@ModelAttribute MatchDTO matchDTO, @ModelAttribute MemberDTO memberDTO, @ModelAttribute ListDTO listDTO, @ModelAttribute MemberService memberService, HttpSession session, Object object, Model model) {
@@ -59,8 +55,8 @@ public class MatchController {
         MatchNumber = 1;
 
         MatchDTO SubmitResult = matchService.MatchingSubmit((String) getPlayername, MatchNumber);
-        Integer MinLevel = listService.ListCount(listDTO, MatchNumber).getListmin();
-        Integer MaxLevel = listService.ListCount(listDTO, MatchNumber).getListmax();
+        Integer MinLevel = listService.ListLoad(MatchNumber).getListmin();
+        Integer MaxLevel = listService.ListLoad(MatchNumber).getListmax();
         Integer PlayerLevel = (Integer) getPlayerlevel;
 
 
@@ -73,6 +69,7 @@ public class MatchController {
             return "loginfail";
 
         }
+
         else if(PlayerLevel > MaxLevel || PlayerLevel < MinLevel){
             System.out.println("적절하지 않음");
             model.addAttribute("message","참여불가한 레벨입니다.");
@@ -97,7 +94,7 @@ public class MatchController {
             model.addAttribute("searchUrl","/member/main");
             // 신청성공
 
-            ListDTO CountResult = listService.ListCount(listDTO, MatchNumber);
+            ListDTO CountResult = listService.ListLoad(MatchNumber);
             int count = CountResult.getParticipant();
             count++;
             CountResult.setParticipant(count);
@@ -109,4 +106,90 @@ public class MatchController {
 
 
     }
+    /*
+    @GetMapping ("/match/match2")
+
+    public String match2Form(@ModelAttribute MemberService memberService, @ModelAttribute MemberDTO memberDTO,@ModelAttribute ListDTO listDTO, Model model, HttpSession session){
+        MatchNumber = 2;
+
+
+        if(listService.ListLoad(MatchNumber).getParticipant() == 9)
+        {
+            model.addAttribute("message","매칭신청이 마감되었습니다.");
+            model.addAttribute("searchUrl","/member/main");
+            // 매칭마감
+            return "loginfail";
+        }
+
+        session.setAttribute("participant", listService.ListLoad(MatchNumber).getParticipant());
+        session.setAttribute("listmin", listService.ListLoad(MatchNumber).getListmin());
+        session.setAttribute("listmax", listService.ListLoad(MatchNumber).getListmax());
+        return "match1";
+    }
+
+
+    @PostMapping("/match/match2")
+    public String match2(@ModelAttribute MatchDTO matchDTO, @ModelAttribute MemberDTO memberDTO, @ModelAttribute ListDTO listDTO, @ModelAttribute MemberService memberService, HttpSession session, Object object, Model model) {
+
+        Object getPlayername = session.getAttribute("loginUserid");
+        Object getPlayerlevel = session.getAttribute("loginUserlevel");
+        // 객체선언 해서 플레이어 네임을 getPlayername에 변수를 지정하여 넣음
+        MatchNumber = 2;
+
+        MatchDTO SubmitResult = matchService.MatchingSubmit((String) getPlayername, MatchNumber);
+        Integer MinLevel = listService.ListLoad(MatchNumber).getListmin();
+        Integer MaxLevel = listService.ListLoad(MatchNumber).getListmax();
+        Integer PlayerLevel = (Integer) getPlayerlevel;
+
+
+
+        if(SubmitResult!=null){
+
+            model.addAttribute("message","매칭신청 내역이 이미 존재합니다.\n매칭내역을 확인해주세요");
+            model.addAttribute("searchUrl","/member/main");
+            // 신청실패
+            session.invalidate();
+            return "loginfail";
+
+        }
+        else if(PlayerLevel > MaxLevel || PlayerLevel < MinLevel){
+            System.out.println("적절하지 않음");
+            model.addAttribute("message","참여불가한 레벨입니다.");
+            model.addAttribute("searchUrl","/member/main");
+            // 참여불가한 레벨
+            session.invalidate();
+            return "loginfail";
+        }
+
+
+        else {
+
+            matchDTO.setGamenum(MatchNumber);
+            matchDTO.setPlayer((String) getPlayername);
+            // (String)으로 강제 치환해서 matchDTO에 넣기;
+            matchDTO.setTeam("non");
+            matchDTO.setPlayerlevel((Integer) getPlayerlevel);
+            matchDTO.setPlayvoted(0);
+
+            matchService.save(matchDTO);
+
+            model.addAttribute("message","매칭 신청이 완료되었습니다.");
+            model.addAttribute("searchUrl","/member/main");
+            // 신청성공
+
+            ListDTO CountResult = listService.ListLoad(MatchNumber);
+            int count = CountResult.getParticipant();
+            count++;
+            CountResult.setParticipant(count);
+            listService.save(CountResult);
+            session.invalidate();
+
+            return "loginfail";
+        }
+
+
+
+    }
+     */
+
 }
