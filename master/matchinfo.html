@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MATCHMATE</title>
+    <link rel="stylesheet" href="/css/reset.css?after">
+    <link rel="stylesheet" href="/font/font.css?after">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/icon.css?after">
+    <script src="/javascript/weather.js"></script>
+</head>
+<body>
+<header id="header">
+    <h1>MATCHMATE</h1>
+</header>
+<main>
+    <div id="main-navbar">
+        <ul id="main-navbar-list">
+            <li>
+                <a href="/member/main">
+                    <p>Home</p>
+                </a>
+            </li>
+            <li>
+                <a href="/member/matchinfo">
+                    <p>Match Info</p>
+                </a>
+            </li>
+            <li>
+                <a href="/member/usermanual">
+                    <p>User Manual</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="main-contents">
+            <div class="matchform">
+                <div>
+                    <h1>MATCH1</h1>
+                </div>
+                <div>
+                    <a href="../match/match1">
+                        매치신청</a>
+                </div>
+            </div>
+            <div class="matchform">
+                <div>
+                    <h1>MATCH2</h1>
+                </div>
+                <div>
+                    <a href="../match/match2">
+                    매치신청</a>
+                </div>
+            </div>
+    </div>
+    <div id="main-bar1">
+        <div id="main-bar1-user">
+            <div>
+                <div id="user-interface"></div>
+                <div>
+                    <p th:text="|레벨 ${session.loginUserlevel}|" class="user-interface-dept"></p>
+                    <p th:text="${session.loginUserid}" class="user-interface-num"></p>
+                    <p th:text="${session.loginUsername}" class="user-interface-name"></p>
+                </div>
+            </div>
+            <div>
+                <a href="/member/logout"> <p>Logout</p></a>
+            </div>
+        </div>
+        <div class="weather">
+            <section class="weather-container">
+                <div class="weather-data">
+                    <h1 class="location"></h1>
+                    <div class="current-time"></div>
+                </div>
+                <div class="weather-temp">
+                    <div class="icon"></div>
+                    <div class="mainweather"></div>
+                    <div class="current-temp"></div>
+                    <div class="feels-like"></div>
+
+
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
+</body>
+</html>
+
