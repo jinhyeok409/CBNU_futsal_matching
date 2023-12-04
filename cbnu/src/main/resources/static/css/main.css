@@ -64,6 +64,65 @@ main{
     justify-content: center;
     align-items: center;
 }
+.main-welcome {
+    width: 60%;
+    height: 80%;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#cbnu_logo_img{
+    width: 230px;
+    margin-bottom: 30px;
+}
+.welcome-section{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.description{
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.description > div:nth-child(1){
+    font-size:20px;
+
+    margin-bottom: 2px;
+}
+.description > div:nth-child(2){
+    font-family: 'KBO-Dia-Gothic_bold';
+    font-size: 45px;
+    color: white;
+    background-color:rgb(146,35,78);
+    padding: 15px;
+    border-radius: 25px;
+}
+.publisher{
+    padding: 10px;
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 15px;
+
+}
+
+.publisher > div{
+    color: gray;
+    padding: 0px 20px;
+}
 
 .main-contents{
     overflow:auto;
@@ -152,12 +211,13 @@ main{
 }
 
 .weather{
-    margin-top : 1vh;
-    padding-top : 1vh;
     width : 21.8vh;
     height : 35vh;
+    padding-bottom: 5px;
     font-size: 2vh;
     background-color: aliceblue;
+    border-right: #4a7565 1px solid;
+    border-bottom: #4a7565 1px solid;
 }
 
 .weather-container{
@@ -167,6 +227,12 @@ main{
     justify-content: center;
     flex-direction: column;
 }
+.weather-data{
+    background-color: gray;
+    padding-top: 5px;
+    padding-bottom: 3px;
+    padding-left: 3px;
+}
 .location{
     font-size: 3vh;
 
@@ -174,24 +240,72 @@ main{
 .current-time{
     font-size: 1.5vh;
     padding-top: 5px;
-    color:dimgray;
+    color:white;
+    background-color: dimgray;
+    width: 70%;
 }
 
 .weather-temp{
-
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.icon-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding:15px 0px;
+    background-color: #f5f5f5;
+}
+.icon {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .mainweather{
-    margin-bottom: 7ㅂpx;
+    margin-bottom: 7px;
+    background-color: cadetblue;
+    padding: 5px;
+    border-radius: 3px;
+    color:white;
+}
+.temp-section{
+    width: 100%;
+    height: 100%;
+    margin-top:5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.temp-section > div{
+    background-color: #ffffff;
+    padding: 3px;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: 3px 0px;
+    font-size: 2vh;
 }
 .current-temp
 {
-    font-size: 2.5vh;
+
 }
 .feels-like
 {
-    font-size: 2.5vh;
+
 }
+
+#main-bar1-user{
+    border-top: 1px solid rgb(146,35,78);
+    border-right: 1px solid rgb(146,35,78);
+}
+
 #main-bar1-user a {
     color:white;
 }
@@ -267,6 +381,14 @@ main{
     background-color: gray;
     margin-left: 1vh;
     margin-right: 1vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#user-interface img {
+    height: 8vh;
+    width: 8vh;
 }
 
 .user-interface-dept {
