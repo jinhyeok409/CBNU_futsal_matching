@@ -12,6 +12,10 @@ import com.project.cbnu.dto.MatchDTO;
 import com.project.cbnu.dto.MemberDTO;
 import com.project.cbnu.dto.ListDTO;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 public class MatchController {
@@ -26,19 +30,6 @@ public class MatchController {
     public String match1Form(@ModelAttribute MemberService memberService, @ModelAttribute MemberDTO memberDTO,@ModelAttribute ListDTO listDTO, Model model, HttpSession session){
         Integer MatchNumber = 1;
         session.setAttribute("participant", listService.ListCount(listDTO, MatchNumber).getParticipant());
-
-
-
-
-
-        if(listService.ListCount(listDTO, MatchNumber).getParticipant() == 9)
-        {
-            model.addAttribute("message","매칭신청이 마감되었습니다.");
-            model.addAttribute("searchUrl","/member/main");
-            // 매칭마감
-            return "loginfail";
-        }
-
 
         session.setAttribute("listmin", listService.ListCount(listDTO, MatchNumber).getListmin());
         session.setAttribute("listmax", listService.ListCount(listDTO, MatchNumber).getListmax());
@@ -81,6 +72,16 @@ public class MatchController {
             return "loginfail";
         }
 
+        else if(listService.ListCount(listDTO, MatchNumber).getParticipant() == 12)
+        {
+            // 팀 나누는 기능 추가
+            divideTeams(MatchNumber);
+
+            model.addAttribute("message","매칭신청이 마감되었습니다.");
+            model.addAttribute("searchUrl","/member/main");
+            // 매칭마감
+            return "loginfail";
+        }
 
         else {
 
@@ -105,8 +106,39 @@ public class MatchController {
 
             return "loginfail";
         }
+    }
+    private void divideTeams(Integer matchNumber) {
+        // A 팀과 B 팀의 초기화
+        List<MatchDTO> players = matchService.getAllPlayersForMatch(matchNumber);
+        List<MatchDTO> teamA = new ArrayList<>();
+        List<MatchDTO> teamB = new ArrayList<>();
 
+        // 플레이어를 레벨 순서로 정렬
+        players.sort(Comparator.comparingInt(MatchDTO::getPlayerlevel));
 
+        // 팀에 번갈아가며 추가
+        for (int i = 0; i < players.size(); i++) {
+            if (i % 2 == 0) {
+                teamA.add(players.get(i));
+            } else {
+                teamB.add(players.get(i));
+            }
+        }
 
+        // 팀 정보를 DB에 업데이트
+        updateTeamsInDatabase(teamA, teamB);
+    }
+
+    //팀정보 db에 업데이트
+    private void updateTeamsInDatabase(List<MatchDTO> teamA, List<MatchDTO> teamB) {
+        for (MatchDTO player : teamA) {
+            player.setTeam("A");
+            matchService.save(player);
+        }
+
+        for (MatchDTO player : teamB) {
+            player.setTeam("B");
+            matchService.save(player);
+        }
     }
 }
