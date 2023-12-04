@@ -25,7 +25,7 @@ public class ListService {
 
     }
 
-    public ListDTO ListCount(ListDTO listDTO, Integer MatchNumber) {
+    public ListDTO ListLoad(Integer MatchNumber) {
 
     Optional<ListEntity> byGamelist = listRepository.findByGamelist(MatchNumber);
 

@@ -53,35 +53,4 @@ public class MemberService {
             return null;
         }
     }
-
-    public MemberDTO LevelCheck (MemberDTO memberDTO, Integer MaxLevel, Integer MinLevel){
-
-        System.out.println("시작");
-        Optional<MemberEntity> byUserId = memberRepository.findByUserid(memberDTO.getUserid());
-
-        System.out.println("등등");
-        if(byUserId.isPresent()){
-            // 조회 결과가 있음
-            System.out.println("조회결과 있음");
-            MemberEntity memberEntity = byUserId.get();
-            Integer UserLevel = memberEntity.getUserlevel();
-            if(UserLevel > MaxLevel || UserLevel < MinLevel){
-
-                System.out.println("체크완료");
-                // entity - dto 변환 후 리턴
-                MemberDTO dto = MemberDTO.toMemberDTO(memberEntity);
-                return dto;
-
-            }
-            else {
-                System.out.println("없음1");
-                return null;
-            }
-        }
-        else {
-            System.out.println("없음2");
-            //조회 결과가 없음
-            return null;
-        }
-    }
 }
