@@ -1,8 +1,6 @@
 package com.project.cbnu.dto;
 
 import com.project.cbnu.entity.ListEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

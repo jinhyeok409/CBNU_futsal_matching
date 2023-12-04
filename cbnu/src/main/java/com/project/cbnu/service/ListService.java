@@ -1,16 +1,10 @@
 package com.project.cbnu.service;
 
 import com.project.cbnu.dto.ListDTO;
-import com.project.cbnu.dto.MatchDTO;
-import com.project.cbnu.dto.MemberDTO;
 import com.project.cbnu.entity.ListEntity;
-import com.project.cbnu.entity.MatchEntity;
-import com.project.cbnu.entity.MemberEntity;
 import com.project.cbnu.repository.ListRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -41,5 +35,7 @@ public class ListService {
     return dto;
 
     }
+
+
 
 }

@@ -1,16 +1,11 @@
 package com.project.cbnu.controller;
 
 import com.project.cbnu.dto.ListDTO;
-import com.project.cbnu.dto.MatchDTO;
 import com.project.cbnu.dto.MemberDTO;
-import com.project.cbnu.entity.MemberEntity;
 import com.project.cbnu.service.MemberService;
 import com.project.cbnu.service.ListService;
 import jakarta.servlet.http.HttpSession;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -52,11 +47,9 @@ public class MemberController {
     @GetMapping ("/member/matchinfo")
     public String ParticipantCheck(@ModelAttribute MemberDTO memberDTO,@ModelAttribute ListDTO listDTO, Model model, HttpSession session){
 
-        Object getPlayername = session.getAttribute("loginUserid");
-        Object getPlayerlevel = session.getAttribute("loginUserlevel");
         // 객체선언 해서 플레이어 네임을 getPlayername에 변수를 지정하여 넣음
-        Integer MatchNumber = 1;
-        session.setAttribute("participant", listService.ListCount(listDTO, MatchNumber).getParticipant());
+        // Integer MatchNumber = 1;
+        // session.setAttribute("participant", listService.ListCount(listDTO, MatchNumber).getParticipant());
         return "matchinfo";
     }
 
@@ -78,6 +71,7 @@ public class MemberController {
     @PostMapping("/member/login")
     public String login(@ModelAttribute MemberDTO memberDTO, Model model, HttpSession session){
         MemberDTO loginResult = memberService.login(memberDTO);
+
         if (loginResult != null){
             //로그인 성공
             //로그인 성공한 유저의 userid 값을 loginUserid로 저장
@@ -119,6 +113,7 @@ public class MemberController {
         session.invalidate();
         return "redirect:/";
     }
+
 
 
 }

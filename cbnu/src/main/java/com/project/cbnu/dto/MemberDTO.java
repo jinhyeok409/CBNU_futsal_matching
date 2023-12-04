@@ -21,12 +21,10 @@ public class MemberDTO {
 
     public static MemberDTO toMemberDTO (MemberEntity memberEntity){
         MemberDTO memberDTO = new MemberDTO();
-//      memberDTO.setId(memberEntity.getId());
         memberDTO.setUserid(memberEntity.getUserid());
         memberDTO.setUserpw(memberEntity.getUserpw());
         memberDTO.setUsername(memberEntity.getUsername());
         memberDTO.setUserlevel(memberEntity.getUserlevel());
-        // memberDTO.setVoted(memberEntity.getVoted());
         memberDTO.setVoted(memberEntity.getVoted());
 
 

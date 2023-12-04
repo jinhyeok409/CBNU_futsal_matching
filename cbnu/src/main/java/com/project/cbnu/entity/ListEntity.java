@@ -2,7 +2,6 @@ package com.project.cbnu.entity;
 
 import com.project.cbnu.dto.ListDTO;
 import jakarta.persistence.*;
-import lombok.Generated;
 import lombok.Getter;
 import lombok.Setter;
 
