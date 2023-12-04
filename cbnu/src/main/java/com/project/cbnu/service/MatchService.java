@@ -5,8 +5,6 @@ import com.project.cbnu.entity.MatchEntity;
 import com.project.cbnu.repository.MatchRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.lang.reflect.Member;
 import java.util.Optional;
 
 @Service
@@ -14,7 +12,6 @@ import java.util.Optional;
 public class MatchService {
 
     private final MatchRepository matchRepository;
-
     public void save(MatchDTO matchDTO) {
         // 1. dto -> entity 변환
         // 2. repository 의 save 메서드 호출
@@ -25,17 +22,24 @@ public class MatchService {
     }
 
 
-    public MatchDTO matchingcount(MatchDTO matchDTO) {
-        Optional<MatchEntity> byGamenum = matchRepository.findByGamenum(matchDTO.getGamenum());
+    public MatchDTO MatchingSubmit(String UserId, Integer MatchNumber) {
 
-        MatchEntity matchEntity = byGamenum.get();
 
-        MatchDTO dto = MatchDTO.toMatchDTO(matchEntity);
-        return dto;
+        Optional<MatchEntity> byPlayer = matchRepository.findByPlayer(UserId);
+
+
+        if (byPlayer.isPresent()) {
+            MatchEntity matchEntity = byPlayer.get();
+            if (matchEntity.getGamenum().equals(MatchNumber)) {
+
+                MatchDTO dto = MatchDTO.toMatchDTO(matchEntity);
+                return dto;
+
+            }
+        }
+
+            return null;
 
 
     }
-
-
-
 }
