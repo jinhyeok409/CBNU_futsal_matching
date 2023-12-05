@@ -12,6 +12,10 @@ import com.project.cbnu.dto.MatchDTO;
 import com.project.cbnu.dto.MemberDTO;
 import com.project.cbnu.dto.ListDTO;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 public class MatchController {
@@ -19,30 +23,39 @@ public class MatchController {
     //생성자 주입
     private final MatchService matchService;
     private final ListService listService;
-    Integer MatchNumber ;
-    @GetMapping ("/match/match1result")
+    Integer MatchNumber;
+
+    @GetMapping("/match/match1result")
     public String matchresultForm() {
         return "match1result";
     }
 
     //회원가입 페이지 출력 요청
-    @GetMapping ("/match/match1")
-    public String match1Form(@ModelAttribute MemberService memberService, @ModelAttribute MemberDTO memberDTO,@ModelAttribute ListDTO listDTO, Model model, HttpSession session){
+    @GetMapping("/match/match1")
+    public String match1Form(@ModelAttribute MemberService memberService, @ModelAttribute MemberDTO memberDTO, @ModelAttribute ListDTO listDTO, Model model, HttpSession session) {
+
         MatchNumber = 1;
 
 
-        if(listService.ListLoad(MatchNumber).getParticipant() == 9)
-        {
-            model.addAttribute("message","매칭신청이 마감되었습니다.");
-            model.addAttribute("searchUrl","/member/main");
+
+
+        if (listService.ListLoad(MatchNumber).getParticipant() == 12) {
+
+            model.addAttribute("message", "매칭신청이 마감되었습니다.");
+            model.addAttribute("searchUrl", "/member/main");
+
             // 매칭마감
             return "loginfail";
         }
 
+
+
         session.setAttribute("participant", listService.ListLoad(MatchNumber).getParticipant());
         session.setAttribute("listmin", listService.ListLoad(MatchNumber).getListmin());
         session.setAttribute("listmax", listService.ListLoad(MatchNumber).getListmax());
+
         return "match1";
+
     }
 
 
@@ -60,25 +73,46 @@ public class MatchController {
         Integer PlayerLevel = (Integer) getPlayerlevel;
 
 
+        if (SubmitResult != null) {
 
-        if(SubmitResult!=null){
-
-            model.addAttribute("message","매칭신청 내역이 이미 존재합니다.\n매칭내역을 확인해주세요");
-            model.addAttribute("searchUrl","/member/main");
+            model.addAttribute("message", "매칭신청 내역이 이미 존재합니다.\n매칭내역을 확인해주세요");
+            model.addAttribute("searchUrl", "/member/main");
             // 신청실패
             return "loginfail";
 
-        }
-
-        else if(PlayerLevel > MaxLevel || PlayerLevel < MinLevel){
+        } else if (PlayerLevel > MaxLevel || PlayerLevel < MinLevel) {
             System.out.println("적절하지 않음");
-            model.addAttribute("message","참여불가한 레벨입니다.");
-            model.addAttribute("searchUrl","/member/main");
+            model.addAttribute("message", "참여불가한 레벨입니다.");
+            model.addAttribute("searchUrl", "/member/main");
             // 참여불가한 레벨
             return "loginfail";
         }
 
 
+        else if (listService.ListLoad(MatchNumber).getParticipant() == 11) {
+
+            matchDTO.setGamenum(MatchNumber);
+            matchDTO.setPlayer((String) getPlayername);
+            // (String)으로 강제 치환해서 matchDTO에 넣기;
+            matchDTO.setTeam("non");
+            matchDTO.setPlayerlevel((Integer) getPlayerlevel);
+            matchDTO.setPlayvoted(0);
+
+            matchService.save(matchDTO);
+
+            model.addAttribute("message", "매칭 신청이 완료되었습니다.");
+            model.addAttribute("searchUrl", "/member/main");
+            // 신청성공
+
+            ListDTO CountResult = listService.ListLoad(MatchNumber);
+            int count = CountResult.getParticipant();
+            count++;
+            CountResult.setParticipant(count);
+            listService.save(CountResult);
+            divideTeams(MatchNumber);
+
+            return "loginfail";
+        }
         else {
 
             matchDTO.setGamenum(MatchNumber);
@@ -90,8 +124,8 @@ public class MatchController {
 
             matchService.save(matchDTO);
 
-            model.addAttribute("message","매칭 신청이 완료되었습니다.");
-            model.addAttribute("searchUrl","/member/main");
+            model.addAttribute("message", "매칭 신청이 완료되었습니다.");
+            model.addAttribute("searchUrl", "/member/main");
             // 신청성공
 
             ListDTO CountResult = listService.ListLoad(MatchNumber);
@@ -100,12 +134,14 @@ public class MatchController {
             CountResult.setParticipant(count);
             listService.save(CountResult);
 
+
             return "loginfail";
         }
-
-
-
     }
+
+
+
+
     /*
     @GetMapping ("/match/match2")
 
@@ -161,6 +197,16 @@ public class MatchController {
             return "loginfail";
         }
 
+        else if(listService.ListCount(listDTO, MatchNumber).getParticipant() == 12)
+        {
+            // 팀 나누는 기능 추가
+            divideTeams(MatchNumber);
+
+            model.addAttribute("message","매칭신청이 마감되었습니다.");
+            model.addAttribute("searchUrl","/member/main");
+            // 매칭마감
+            return "loginfail";
+        }
 
         else {
 
@@ -186,10 +232,43 @@ public class MatchController {
 
             return "loginfail";
         }
-
-
-
     }
+
      */
 
-}
+
+        private void divideTeams (Integer matchNumber){
+            // A 팀과 B 팀의 초기화
+            List<MatchDTO> players = matchService.getAllPlayersForMatch(matchNumber);
+            List<MatchDTO> teamA = new ArrayList<>();
+            List<MatchDTO> teamB = new ArrayList<>();
+
+            // 플레이어를 레벨 순서로 정렬
+            players.sort(Comparator.comparingInt(MatchDTO::getPlayerlevel));
+
+            // 팀에 번갈아가며 추가
+            for (int i = 0; i < players.size(); i++) {
+                if (i % 2 == 0) {
+                    teamA.add(players.get(i));
+                } else {
+                    teamB.add(players.get(i));
+                }
+            }
+
+            // 팀 정보를 DB에 업데이트
+            updateTeamsInDatabase(teamA, teamB);
+        }
+
+        //팀정보 db에 업데이트
+        private void updateTeamsInDatabase (List < MatchDTO > teamA, List < MatchDTO > teamB){
+            for (MatchDTO player : teamA) {
+                player.setTeam("A");
+                matchService.save(player);
+            }
+
+            for (MatchDTO player : teamB) {
+                player.setTeam("B");
+                matchService.save(player);
+            }
+        }
+    }
