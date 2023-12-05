@@ -1,0 +1,35 @@
+12/4  （1)
+service 添加 weatherservice.java     service 중 추가 weatherservice.java 
+1-天气api key未添加		    날씨 API 키가 추가되지 않았
+2-db（比赛匹配时间数据）		    db (경기시간 데이터)
+3-
+4-
+
+MatchService.java添加新的方法来检查和取消比赛		MatchService.java 중 일치 여부를 확인하고 취소하는 새로운 방법이 추가
+1-获取即将开始的比赛信息					다가오는 대회에 대한 정보를 얻으세요
+2-取消比赛逻辑？						경기 취소 로직은 아직 결정되지 않았
+
+controller添加MatchScheduler.java			controller 중 추가 MatchScheduler.java
+1-定期执行比赛检查（1分钟？）				정기적인 일치 확인 수행(1분?)
+
+取消匹配通知在匹配申请页面？				매칭 신청 페이지에서 매칭 취소알림?
+1-需要matchID						matchID필요?DB상관
+2-定期检查比赛状态？（冲突？测试报错）			정기적으로 게임 상태를 확인하시나요? (충돌? 테스트 오류)
+-----javascript-----
+function checkMatchStatus(matchId) {
+    fetch(`/matches/${matchId}/status`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'Cancelled') {
+                alert(`경기 ${matchId} 취소.`);
+                // 更新页面元素以反映比赛被取消的状态 경기 취소 상태를 반영하도록 페이지 요소 업데이트
+            }
+        })
+        .catch(error => console.error('Error fetching match status:', error));
+}
+
+//检查比赛状态  경기 상태 확인
+setInterval(() => {
+    checkMatchStatus（#MatchId#);// 替换 `MatchId` 为具体的比赛ID 'MatchId'를 특정 일치 ID로 바꾸
+}, 5000); // 每5秒检查一次 5초마다 확인
+-----javascript-----
