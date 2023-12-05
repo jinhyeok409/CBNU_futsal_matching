@@ -73,10 +73,6 @@ public class MemberController {
         MemberDTO loginResult = memberService.login(memberDTO);
 
 
-        //test
-        System.out.println(loginResult.getVoted());
-        System.out.println(loginResult.getUserlevel());
-
 
         if (loginResult != null){
             //로그인 성공
