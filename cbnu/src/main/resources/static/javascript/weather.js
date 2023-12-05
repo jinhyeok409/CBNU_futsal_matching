@@ -51,7 +51,7 @@ function loadWeather(data) {
     currentTime.append (`${month}월 ${day}일 ${hours}시 ${minutes}분`);
     mainweather.append(data.weather[0].description);
 
-    icon.innerHTML = `<img src = "https://openweathermap.org/img/wn/${weatherIcon}@2x.png" width=100% height="100%">`;
+    icon.innerHTML = `<img src = "https://openweathermap.org/img/wn/${weatherIcon}@2x.png" width=50% height="50%">`;
 
     location.reload();
 
