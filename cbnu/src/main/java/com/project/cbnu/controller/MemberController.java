@@ -72,6 +72,12 @@ public class MemberController {
     public String login(@ModelAttribute MemberDTO memberDTO, Model model, HttpSession session){
         MemberDTO loginResult = memberService.login(memberDTO);
 
+
+        //test
+        System.out.println(loginResult.getVoted());
+        System.out.println(loginResult.getUserlevel());
+
+
         if (loginResult != null){
             //로그인 성공
             //로그인 성공한 유저의 userid 값을 loginUserid로 저장
@@ -91,6 +97,13 @@ public class MemberController {
                 loginResult.setVoted(0);
 
             }
+            // 레벨다운
+            else if(loginResult.getVoted()<0){
+                int level = loginResult.getUserlevel();
+                loginResult.setUserlevel(--level);
+                loginResult.setVoted(0);
+            }
+
             // 로그인 성공한 유저의 level값을 loginUserLevel로 저장
             session.setAttribute("loginUserlevel", loginResult.getUserlevel());
             // 누적투표를 votedcount로 저장

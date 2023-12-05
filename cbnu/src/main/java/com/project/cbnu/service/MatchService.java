@@ -5,7 +5,10 @@ import com.project.cbnu.entity.MatchEntity;
 import com.project.cbnu.repository.MatchRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -21,6 +24,13 @@ public class MatchService {
 
     }
 
+    //
+    public List<MatchDTO> getAllPlayersForMatch(Integer matchNumber) {
+        List<MatchEntity> playersEntities = matchRepository.findByGamenum(matchNumber);
+        return playersEntities.stream()
+                .map(MatchDTO::toMatchDTO)
+                .collect(Collectors.toList());
+    }
 
     public MatchDTO MatchingSubmit(String UserId, Integer MatchNumber) {
 
