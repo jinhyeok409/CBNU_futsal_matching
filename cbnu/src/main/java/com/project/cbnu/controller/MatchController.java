@@ -39,14 +39,14 @@ public class MatchController {
 
 
 
-        if (listService.ListLoad(MatchNumber).getParticipant() == 12) {
-
-            model.addAttribute("message", "매칭신청이 마감되었습니다.");
-            model.addAttribute("searchUrl", "/member/main");
-
-            // 매칭마감
-            return "loginfail";
-        }
+//        if (listService.ListLoad(MatchNumber).getParticipant() == 12) {
+//
+//            model.addAttribute("message", "매칭신청이 마감되었습니다.");
+//            model.addAttribute("searchUrl", "/member/main");
+//
+//            // 매칭마감
+//            return "loginfail";
+//        }
 
 
 
@@ -112,8 +112,14 @@ public class MatchController {
             divideTeams(MatchNumber);
 
             return "loginfail";
-        }
-        else {
+        } else if (listService.ListLoad(MatchNumber).getParticipant() == 12) {
+
+            model.addAttribute("message", "매칭신청이 마감되었습니다.");
+            model.addAttribute("searchUrl", "/member/main");
+
+            // 매칭마감
+            return "loginfail";
+        } else {
 
             matchDTO.setGamenum(MatchNumber);
             matchDTO.setPlayer((String) getPlayername);
