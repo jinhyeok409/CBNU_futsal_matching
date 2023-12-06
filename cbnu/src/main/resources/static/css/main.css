@@ -67,8 +67,6 @@ main{
 .main-welcome {
     width: 60%;
     height: 80%;
-    padding-left: 5px;
-    padding-right: 5px;
     background-color: white;
     display: flex;
     justify-content: center;
@@ -129,57 +127,97 @@ main{
     width: 60%;
     height: 80%;
     background-color: white;
-    padding-left: 5px;
-    padding-right: 5px;
     font-size : 100px;
     /*overflow:scroll; 나중에 스크롤 적용*/
 }
 .match-contents{
+    position: relative;
     overflow:auto;
     width: 60%;
     height: 80%;
     background-color: white;
-    padding-left: 5px;
-    padding-right: 5px;
     font-size : 100px;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .matchform {
-    width: 250px;
-    height: 250px;
+    width:195px;
+    height: 280px;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    font-size: 25px;
+    font-size: 27px;
     margin: 10px;
     padding: 25px 0px;
-    background-color: #cecece;
+    background-image: url("https://img.olympics.com/images/image/private/t_s_pog_staticContent_hero_xl_2x/f_auto/primary/hvyyta0wxlhzsihzgxgk");
 }
 .matchform:hover
 {
-    background-color: #c7c7c7;
+    width: 200px;
+    height: 285px;
+    transition: 0.5s ease;
 }
 
 .matchform > div
 {
-    margin: 10px 0px;
+    margin: 30px 0px;
+}
+
+.matchform > div:nth-child(1)
+{
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+
+.matchform p
+{
+    font-size: 10px;
+    margin: 5px 0px;
+    text-align: center;
+    color: white;
 }
 
 .matchform h1
 {
-    font-family: 'KBO-Dia-Gothic_bold';
+    font-family: 'GmarketSansMedium';
+    color:white;
 }
 
 .matchform a
 {
-    background-color: rgb(146,35,78);
+    background-color: rgb(146, 35, 78);
     text-decoration: none;
     color: white;
-    font-family: 'KBO-Dia-Gothic_bold';
+    font-family: 'GmarketSansMedium';
+    font-size: 15px;
+    padding: 6px 30px;
+    border-radius: 10px;
+
+}
+.matchform a:hover
+{
+    background-color: white;
+    color: rgb(146, 35, 78);
+    transition: all 0.5s ease;
 }
 
+.matchform-click > div{
+    margin-top: 10px;
+}
+
+.match-session{
+    width: 170px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
 .matching-contents{
     margin : 8vh;
 }
