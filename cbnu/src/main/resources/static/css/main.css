@@ -143,22 +143,22 @@ main{
 }
 
 .matchform {
-    width:195px;
-    height: 280px;
+    width:25%;
+    height: 80% ;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    font-size: 27px;
+    font-size: 4.5vh;
     margin: 10px;
     padding: 25px 0px;
     background-image: url("https://img.olympics.com/images/image/private/t_s_pog_staticContent_hero_xl_2x/f_auto/primary/hvyyta0wxlhzsihzgxgk");
 }
 .matchform:hover
 {
-    width: 200px;
-    height: 285px;
+    width: 27%;
+    height: 82%;
     transition: 0.5s ease;
 }
 
@@ -171,13 +171,13 @@ main{
 {
     border-bottom: 1px solid white;
     border-top: 1px solid white;
-    padding-bottom: 3px;
-    padding-top: 3px;
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
 
 .matchform p
 {
-    font-size: 10px;
+    font-size: 2vh;
     margin: 5px 0px;
     text-align: center;
     color: white;
@@ -195,9 +195,10 @@ main{
     text-decoration: none;
     color: white;
     font-family: 'GmarketSansMedium';
-    font-size: 15px;
-    padding: 6px 30px;
+    font-size: 20px;
+    padding: 6px 20%;
     border-radius: 10px;
+    margin-top: 10px;
 
 }
 .matchform a:hover
@@ -205,6 +206,13 @@ main{
     background-color: white;
     color: rgb(146, 35, 78);
     transition: all 0.5s ease;
+}
+.matchform-click{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .matchform-click > div{
