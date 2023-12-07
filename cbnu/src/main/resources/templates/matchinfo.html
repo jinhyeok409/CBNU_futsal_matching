@@ -34,49 +34,84 @@
         </ul>
     </div>
     <div class="match-contents">
-            <div class="matchform">
+        <div class="matchform">
+            <div>
+                <h1>MATCH1</h1>
+            </div>
+            <div class = "match-session">
                 <div>
-                    <h1>MATCH1</h1>
+                    <p th:text="${session.listmin} + ' ~ ' + ${session.listmax} + ' Level ' "></p>
                 </div>
                 <div>
-                    <a href="../match/match1">
-                        매치신청</a>
+                    <p th:text="${session.participant} + '/12'"></p>
                 </div>
             </div>
-            <div class="matchform">
-                <div>
-                    <h1>MATCH2</h1>
-                </div>
-                <div>
-                    <a href="../match/match2">
+            <div class="matchform-click">
+                <a href="../match/match1">
                     매치신청</a>
+                <a href="../match/cancel1 ">
+                    매치취소
+                </a>
+            </div>
+        </div>
+        <div class="matchform">
+            <div>
+                <h1>MATCH2</h1>
+            </div>
+            <div class = "match-session">
+                <div>
+                    <p th:text="${session.listmin} + ' ~ ' + ${session.listmax} + ' Level ' "></p>
+                </div>
+                <div>
+                    <p th:text="${session.participant} + '/12'"></p>
                 </div>
             </div>
-            <div class="matchform">
-        <div>
-            <h1>MATCH3</h1>
+            <div class="matchform-click">
+                <a href="../match/match1">
+                    매치신청</a>
+                <a href="../match/cancel1 ">
+                    매치취소
+                </a>
+            </div>
         </div>
-        <div>
-            <a href="../match/match3">
-                매치신청</a>
+        <div class="matchform">
+            <div>
+                <h1>MATCH3</h1>
+            </div>
+            <div class = "match-session">
+                <div>
+                    <p th:text="${session.listmin} + ' ~ ' + ${session.listmax} + ' Level ' "></p>
+                </div>
+                <div>
+                    <p th:text="${session.participant} + '/12'"></p>
+                </div>
+            </div>
+            <div class="matchform-click">
+                <a href="../match/match1">
+                    매치신청</a>
+                <a href="../match/cancel1 ">
+                    매치취소
+                </a>
+            </div>
         </div>
-    </div>
-            <div class="matchform">
+        <div class="matchform">
             <div>
                 <h1>MATCH4</h1>
             </div>
-            <div>
-                <a href="../match/match4">
-                    매치신청</a>
+            <div class = "match-session">
+                <div>
+                    <p th:text="${session.listmin} + ' ~ ' + ${session.listmax} + ' Level ' "></p>
+                </div>
+                <div>
+                    <p th:text="${session.participant} + '/12'"></p>
+                </div>
             </div>
-        </div>
-            <div class="matchform">
-            <div>
-                <h1>MATCH5</h1>
-            </div>
-            <div>
-                <a href="../match/match5">
+            <div class="matchform-click">
+                <a href="../match/match1">
                     매치신청</a>
+                    <a href="../match/cancel1 ">
+                        매치취소
+                    </a>
             </div>
         </div>
     </div>
@@ -95,6 +130,9 @@
             <div>
                 <a href="/member/logout"> <p>Logout</p></a>
             </div>
+        </div>
+        <div id="main-bar1-detail">
+            <a href="/member/logout"> <p>매칭내역확인</p></a>
         </div>
         <div class="weather">
             <section class="weather-container">
