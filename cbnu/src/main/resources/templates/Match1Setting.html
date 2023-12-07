@@ -48,8 +48,10 @@
                 <p th:text="|현재인원 : ${session.match1participant}명|"></p>
             </li>
         </ul>
-        <a href="../match/Match1Setting">
-            매치정보</a>
+        <form method="post" action="/match/MatchVoting" id ="matching-form">
+            <input type="submit" name = "match" value="상세인원"/>
+            <input type ="hidden" name = "test" th:value="${match1}"/>
+        </form>
     </div>
     </li>
     <div id="main-bar1">

@@ -26,14 +26,23 @@ public class MatchController {
     Integer MatchNumber;
 
     @GetMapping("/match/Match1Setting")
-    public String Match1SettingForm() {
+    public String Match1SettingForm(Model model) {
+        model.addAttribute("match1",1);
+        model.addAttribute("match2",2);
         return "Match1Setting";
     }
     @GetMapping("/match/MatchVoting")
     public String MatchVotingForm() {
+
+
         return "MatchVoting";
     }
 
+    @PostMapping("/match/MatchVoting")
+    public String PostForm(@RequestParam(value="test") String Number) {
+        System.out.println(Number);
+        return "ManagerMain";
+    }
 
 
     //회원가입 페이지 출력 요청
