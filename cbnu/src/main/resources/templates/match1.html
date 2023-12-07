@@ -42,11 +42,10 @@
                     <p>시간 : 12월 01일 (금) 12:00 ~ 14:00</p>
             </li>
             <li>
-                <p th:text="'참여가능레벨 : ' + 'Level ' + ${session.listmin} +' ~ ' + 'Level '  + ${session.listmax}"></p>
-
+                <p th:text="'참여가능레벨 : ' + 'Level ' + ${session.match1listmin} +' ~ ' + 'Level '  + ${session.match1listmax}"></p>
             </li>
             <li>
-                <p th:text="|현재인원 : ${session.participant}명|"></p>
+                <p th:text="|현재인원 : ${session.match1participant}명|"></p>
             </li>
         </ul>
         <form method="post" action="/match/match1" id ="matching-form">
@@ -69,7 +68,7 @@
             </div>
         </div>
         <div id="main-bar1-detail">
-            <a href="/member/logout"> <p>매칭내역확인</p></a>
+            <a href="/list/matchresult"> <p>매칭내역확인</p></a>
         </div>
         <div class="weather">
             <section class="weather-container">

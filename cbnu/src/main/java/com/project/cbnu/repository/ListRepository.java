@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface ListRepository extends JpaRepository<ListEntity, Integer> {
     // Game으로 Find
     Optional<ListEntity> findByGamelist (Integer Gamelist);
+
+
 }
