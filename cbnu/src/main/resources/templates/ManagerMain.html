@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MATCHMATE</title>
+    <link rel="stylesheet" href="/css/reset.css?after">
+    <link rel="stylesheet" href="/font/font.css?after">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/icon.css?after">
+    <script src="/javascript/weather.js"></script>
+</head>
+<body>
+<header id="header">
+    <h1>MATCHMATE</h1>
+</header>
+<main>
+    <div id="main-navbar">
+        <ul id="main-navbar-list">
+            <li>
+                <a href="/member/ManagerMain">
+                    <p>Home</p>
+                </a>
+            </li>
+            <li>
+                <a href="/member/MatchSetting">
+                    <p>Match Setting</p>
+                </a>
+            </li>
+            <li>
+                <a href="/member/UserSetting">
+                    <p>User Setting</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="main-welcome">
+        <div class="welcome-section">
+            <div>
+                <img src="/img/cbnu_logo.png" id="cbnu_logo_img" alt="" />
+            </div>
+            <div class="description">
+                <div>충북대학교 풋살 매칭 플렛폼</div>
+                <div>MATCHMATE</div>
+            </div>
+            <div class="publisher">
+                <div>김문호</div>
+                <div>김진혁</div>
+                <div>주예훈</div>
+                <div>PIAOZHEZUN</div>
+            </div>
+        </div>
+    </div>
+    <div id="main-bar1">
+        <div id="main-bar1-user">
+            <div>
+                <div id="user-interface"> <div>
+                    <img src="/img/userimage.png" alt="" />
+                </div></div>
+                <div>
+                    <p th:text="|레벨 ${session.loginUserlevel}|" class="user-interface-dept"></p>
+                    <p th:text="${session.loginUserid}" class="user-interface-num"></p>
+                    <p th:text="${session.loginUsername}" class="user-interface-name"></p>
+                </div>
+            </div>
+            <div>
+                <a href="/member/logout"> <p>Logout</p></a>
+            </div>
+        </div>
+        <div id="main-bar1-detail">
+            <a href="/list/matchresult"> <p>매칭내역확인</p></a>
+        </div>
+        <div class="weather">
+            <section class="weather-container">
+                <div class="weather-data">
+                    <h1 class="location"></h1>
+                    <div class="current-time"></div>
+                </div>
+                <div class="weather-temp">
+                    <div class="icon-section">
+                        <div class="icon"></div>
+                        <div class="mainweather"></div>
+                    </div>
+                    <div class="temp-section">
+                        <div class="current-temp"></div>
+                        <div class="feels-like"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
+</body>
+</html>
+

@@ -25,10 +25,16 @@ public class MatchController {
     private final ListService listService;
     Integer MatchNumber;
 
-    @GetMapping("/match/match1result")
-    public String matchresultForm() {
-        return "match1result";
+    @GetMapping("/match/Match1Setting")
+    public String Match1SettingForm() {
+        return "Match1Setting";
     }
+    @GetMapping("/match/MatchVoting")
+    public String MatchVotingForm() {
+        return "MatchVoting";
+    }
+
+
 
     //회원가입 페이지 출력 요청
     @GetMapping("/match/match1")
@@ -277,12 +283,12 @@ public class MatchController {
         //팀정보 db에 업데이트
         private void updateTeamsInDatabase (List < MatchDTO > teamA, List < MatchDTO > teamB){
             for (MatchDTO player : teamA) {
-                player.setTeam("A");
+                player.setTeam("RED");
                 matchService.save(player);
             }
 
             for (MatchDTO player : teamB) {
-                player.setTeam("B");
+                player.setTeam("BLUE");
                 matchService.save(player);
             }
         }
