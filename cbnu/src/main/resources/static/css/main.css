@@ -248,23 +248,28 @@ main{
     margin-top: 2vh;
 }
 
+#a{
+    margin-top: 8vh;
+}
+
 .matching-contents > li:nth-child(3) p
 {
     color: #5e5e5e;
-    font-size: 5vh;
-    margin-top: 25vh;
+    font-size: 4vh;
+    margin-bottom: 8px;
 }
 
 .matching-contents > li:nth-child(4) p
 {
     color: #bbbbbb;
     font-size: 3.5vh;
-    margin-top: 0.5vh;
+    margin-top: 1vh;
 }
 .matching-contents li p{
     font-size: 4vh;
     color: black;
 }
+
 #matching-form > input{
     width: 100%;
     height: 50px;
