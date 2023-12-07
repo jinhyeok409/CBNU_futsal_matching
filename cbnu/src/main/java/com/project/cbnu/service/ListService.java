@@ -1,8 +1,11 @@
 package com.project.cbnu.service;
 
 import com.project.cbnu.dto.ListDTO;
+import com.project.cbnu.dto.MatchDTO;
 import com.project.cbnu.entity.ListEntity;
+import com.project.cbnu.entity.MatchEntity;
 import com.project.cbnu.repository.ListRepository;
+import com.project.cbnu.repository.MatchRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
@@ -12,6 +15,7 @@ import java.util.Optional;
 public class ListService {
 
     private final ListRepository listRepository;
+    private final MatchRepository matchRepository;
 
     public void save(ListDTO listDTO) {
 
@@ -35,6 +39,9 @@ public class ListService {
     return dto;
 
     }
+
+
+
 
 
 

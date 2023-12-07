@@ -34,9 +34,9 @@
         </ul>
     </div>
     <div class="main-contents">
-        <p>
-            팀편성결과
-        </p>
+        <p th:text="'매치번호 : ' + ${session.matchingGameList}"></p>
+        <p th:text="${session.matchingLevelMin} + ' ~ ' + ${session.matchingLevelMax} + ' Level ' "></p>
+        <p th:text="'현재인원 : ' + ${session.matchingParticipant}"></p>
     </div>
     <div id="main-bar1">
         <div id="main-bar1-user">

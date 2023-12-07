@@ -45,11 +45,22 @@ public class MemberController {
     }
 
     @GetMapping ("/member/matchinfo")
-    public String ParticipantCheck(@ModelAttribute MemberDTO memberDTO,@ModelAttribute ListDTO listDTO, Model model, HttpSession session){
+    public String matchinfoForm(@ModelAttribute MemberDTO memberDTO,@ModelAttribute ListDTO listDTO, Model model, HttpSession session){
 
-        // 객체선언 해서 플레이어 네임을 getPlayername에 변수를 지정하여 넣음
-        // Integer MatchNumber = 1;
-        // session.setAttribute("participant", listService.ListCount(listDTO, MatchNumber).getParticipant());
+
+        session.setAttribute("match1participant", listService.ListLoad(1).getParticipant());
+        session.setAttribute("match1listmin", listService.ListLoad(1).getListmin());
+        session.setAttribute("match1listmax", listService.ListLoad(1).getListmax());
+        session.setAttribute("match2participant", listService.ListLoad(2).getParticipant());
+        session.setAttribute("match2listmin", listService.ListLoad(2).getListmin());
+        session.setAttribute("match2listmax", listService.ListLoad(2).getListmax());
+        session.setAttribute("match3participant", listService.ListLoad(3).getParticipant());
+        session.setAttribute("match3listmin", listService.ListLoad(3).getListmin());
+        session.setAttribute("match3listmax", listService.ListLoad(3).getListmax());
+        session.setAttribute("match4participant", listService.ListLoad(4).getParticipant());
+        session.setAttribute("match4listmin", listService.ListLoad(4).getListmin());
+        session.setAttribute("match4listmax", listService.ListLoad(4).getListmax());
+
         return "matchinfo";
     }
 
