@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MATCHMATE</title>
+    <link rel="stylesheet" href="/css/reset.css?after">
+    <link rel="stylesheet" href="/font/font.css?after">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/icon.css?after">
+    <script src="/javascript/weather.js"></script>
+</head>
+<body>
+<header id="header">
+    <h1>MATCHMATE</h1>
+</header>
+<main>
+    <div id="main-navbar">
+        <ul id="main-navbar-list">
+            <li>
+                <a href="/member/ManagerMain">
+                    <p>Home</p>
+                </a>
+            </li>
+            <li>
+                <a href="/member/MatchSetting">
+                    <p>Match Setting</p>
+                </a>
+            </li>
+            <li>
+                <a href="/member/UserSetting">
+                    <p>User Setting</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="main-contents">
+        <ul class="matching-contents">
+            <li >
+                <p >장소 : 충북대학교 스포츠센터 제1풋살구장</p>
+            </li>
+            <li>
+                <p>시간 : 12월 01일 (금) 12:00 ~ 14:00</p>
+            </li>
+            <li>
+                <p th:text="'참여가능레벨 : ' + 'Level ' + ${session.match1listmin} +' ~ ' + 'Level '  + ${session.match1listmax}"></p>
+            </li>
+            <li>
+                <p th:text="|현재인원 : ${session.match1participant}명|"></p>
+            </li>
+        </ul>
+        <form method="post" action="/match/MatchVoting" id ="matching-form">
+            <input type="submit" name = "match1" value="투표" />
+        </form>
+    </div>
+    </li>
+    <div id="main-bar1">
+        <div id="main-bar1-user">
+            <div>
+                <div id="user-interface"></div>
+                <div>
+                    <p th:text="|레벨 ${session.loginUserlevel}|" class="user-interface-dept"></p>
+                    <p th:text="${session.loginUserid}" class="user-interface-num"></p>
+                    <p th:text="${session.loginUsername}" class="user-interface-name"></p>
+                </div>
+            </div>
+            <div>
+                <a href="/member/logout"> <p>Logout</p></a>
+            </div>
+        </div>
+        <div id="main-bar1-detail">
+            <a href="/list/matchresult"> <p>매칭내역확인</p></a>
+        </div>
+        <div class="weather">
+            <section class="weather-container">
+                <div class="weather-data">
+                    <h1 class="location"></h1>
+                    <div class="current-time"></div>
+                </div>
+                <div class="weather-temp">
+                    <div class="icon-section">
+                        <div class="icon"></div>
+                        <div class="mainweather"></div>
+                    </div>
+                    <div class="temp-section">
+                        <div class="current-temp"></div>
+                        <div class="feels-like"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
+</body>
+</html>
+
