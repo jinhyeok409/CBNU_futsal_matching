@@ -73,6 +73,24 @@ public class MatchService {
 
     }
 
+    public MatchDTO VotingParticipant(Integer i, Integer MatchNumber) {
+
+        Optional<MatchEntity> byNumber = matchRepository.findByNumber(i);
+
+        if (byNumber.isPresent()) {
+
+            MatchEntity matchEntity = byNumber.get();
+            if (matchEntity.getGamenum() == MatchNumber) {
+
+                MatchDTO dto = MatchDTO.toMatchDTO(matchEntity);
+                return dto;
+            }
+        }
+
+        return null;
+
+    }
+
 
 
 }

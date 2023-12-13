@@ -28,16 +28,76 @@ public class MatchController {
     private final MatchRepository matchRepository;
 
     Integer MatchNumber;
+    Integer count;
 
     @GetMapping("/match/Match1Setting")
-    public String Match1SettingForm() {
+    public String Match1SettingForm(@RequestParam(value="matchinfo") Integer matchinfo,@RequestParam(value="matchend") Integer matchend,@ModelAttribute MemberService memberService, @ModelAttribute MemberDTO memberDTO, @ModelAttribute ListDTO listDTO, Model model, HttpSession session) {
+
+        Object getPlayername = session.getAttribute("loginUserid");
+        MatchDTO SubmitResult = matchService.AlreadyPresent((String) getPlayername, matchinfo);
+        MatchDTO SubmitResult2 = matchService.MatchingSubmit((String) getPlayername, matchinfo);
+        ListDTO ListResult = listService.ListLoad(matchinfo);
+
+        if(matchend == 100){
+
+            ListResult.setGameend("end");
+            listService.save(ListResult);
+            model.addAttribute("message", "해당 매칭이 완전히 종료되었습니다.");
+            model.addAttribute("searchUrl", "/member/ManagerMain");
+            // 매치가 완전히 종료
+            return "loginfail";
+        }
+        if(ListResult.getGameend().equals("end")){
+            model.addAttribute("message", "종료된 매칭입니다.");
+            model.addAttribute("searchUrl", "/member/ManagerMain");
+            // 매치가 완전히 종료
+            return "loginfail";
+        }
+
+
+        session.setAttribute("matchnumber", matchinfo);
+        session.setAttribute("infoparticipant", ListResult.getParticipant());
+        session.setAttribute("infolistmin", ListResult.getListmin());
+        session.setAttribute("infolistmax", ListResult.getListmax());
+        session.setAttribute("infonumber", ListResult.getGamelist());
+        model.addAttribute("voting1",matchinfo);
+
+
+
         return "Match1Setting";
+
     }
     @GetMapping("/match/MatchVoting")
-    public String MatchVotingForm() {
+    public String MatchVotingForm(@RequestParam(value="voting") Integer matchinfo,@RequestParam(value="matchend") Integer matchend,@ModelAttribute MemberService memberService, @ModelAttribute MemberDTO memberDTO, @ModelAttribute ListDTO listDTO, Model model, HttpSession session) {
+
+        Object getPlayername = session.getAttribute("loginUserid");
+        MatchDTO SubmitResult = matchService.AlreadyPresent((String) getPlayername, matchinfo);
+        MatchDTO SubmitResult2 = matchService.MatchingSubmit((String) getPlayername, matchinfo);
+        ListDTO ListResult = listService.ListLoad(matchinfo);
+
+
+        count = 0;
+
+//        for (int i = 1; count == ListResult.getParticipant(); i++)
+//        {
+//            MatchDTO VotingParticipant = matchService.VotingParticipant(i, matchinfo);
+//            if (VotingParticipant != null)
+//            {
+//                count ++;
+//
+//            }
+//
+//        }
+
+        session.setAttribute("matchnumber", matchinfo);
+        session.setAttribute("infoparticipant", ListResult.getParticipant());
+        session.setAttribute("infolistmin", ListResult.getListmin());
+        session.setAttribute("infolistmax", ListResult.getListmax());
+        session.setAttribute("infonumber", ListResult.getGamelist());
 
 
         return "MatchVoting";
+
     }
 
     @PostMapping("/match/MatchVoting")

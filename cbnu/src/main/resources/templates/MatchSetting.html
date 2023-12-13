@@ -47,11 +47,16 @@
                 </div>
             </div>
             <div class="matchform-click">
-                <a href="../match/Match1Setting">
-                    매치정보</a>
-                <a href="../match/cancel1">
-                    매치종료
-                </a>
+                <form method="get" action="../match/Match1Setting" class="matchform-click">
+                    <input type="submit" name = "match" value="매치정보"/>
+                    <input type ="hidden" name = "matchinfo" th:value="${matchinfo1}"/>
+                    <input type ="hidden" name = "matchend" th:value="${matchinfo1}"/>
+                </form>
+                <form method="get" action="../match/Match1Setting" class="matchform-click">
+                    <input type="submit" name = "match" value="매치종료"/>
+                    <input type ="hidden" name = "matchinfo" th:value="${matchinfo1}"/>
+                    <input type ="hidden" name = "matchend" th:value="${matchend}"/>
+                </form>
             </div>
         </div>
         <div class="matchform">
@@ -67,11 +72,16 @@
                 </div>
             </div>
             <div class="matchform-click">
-                <a href="../match/match1">
-                    매치정보</a>
-                <a href="../match/cancel1 ">
-                    매치종료
-                </a>
+                <form method="get" action="../match/Match1Setting" class="matchform-click">
+                    <input type="submit" name = "match" value="매치정보"/>
+                    <input type ="hidden" name = "matchinfo" th:value="${matchinfo2}"/>
+                    <input type ="hidden" name = "matchend" th:value="${matchinfo2}"/>
+                </form>
+                <form method="get" action="../match/Match1Setting" class="matchform-click">
+                    <input type="submit" name = "match" value="매치종료"/>
+                    <input type ="hidden" name = "matchinfo" th:value="${matchinfo2}"/>
+                    <input type ="hidden" name = "matchend" th:value="${matchend}"/>
+                </form>
             </div>
         </div>
         <div class="matchform">
@@ -87,11 +97,16 @@
                 </div>
             </div>
             <div class="matchform-click">
-                <a href="../match/match1">
-                    매치정보</a>
-                <a href="../match/cancel1 ">
-                    매치종료
-                </a>
+                <form method="get" action="../match/Match1Setting" class="matchform-click">
+                    <input type="submit" name = "match" value="매치정보"/>
+                    <input type ="hidden" name = "matchinfo" th:value="${matchinfo3}"/>
+                    <input type ="hidden" name = "matchend" th:value="${matchinfo3}"/>
+                </form>
+                <form method="get" action="../match/Match1Setting" class="matchform-click">
+                    <input type="submit" name = "match" value="매치종료"/>
+                    <input type ="hidden" name = "matchinfo" th:value="${matchinfo3}"/>
+                    <input type ="hidden" name = "matchend" th:value="${matchend}"/>
+                </form>
             </div>
         </div>
         <div class="matchform">
@@ -107,11 +122,16 @@
                 </div>
             </div>
             <div class="matchform-click">
-                <a href="../match/match1">
-                    매치정보</a>
-                <a href="../match/cancel1 ">
-                    매치종료
-                </a>
+                <form method="get" action="../match/Match1Setting" class="matchform-click">
+                    <input type="submit" name = "match" value="매치정보"/>
+                    <input type ="hidden" name = "matchinfo" th:value="${matchinfo4}"/>
+                    <input type ="hidden" name = "matchend" th:value="${matchinfo4}"/>
+                </form>
+                <form method="get" action="../match/Match1Setting" class="matchform-click">
+                    <input type="submit" name = "match" value="매치종료"/>
+                    <input type ="hidden" name = "matchinfo" th:value="${matchinfo4}"/>
+                    <input type ="hidden" name = "matchend" th:value="${matchend}"/>
+                </form>
             </div>
         </div>
     </div>
