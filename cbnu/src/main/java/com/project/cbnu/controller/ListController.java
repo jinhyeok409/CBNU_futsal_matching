@@ -23,10 +23,11 @@ public class ListController {
     //생성자 주입
     private final MatchRepository matchRepository;
     private final ListService listService;
+    private final MatchService matchService;
 
     // 결과 페이지 출력
     @GetMapping ("/list/matchresult")
-    public String lineupForm(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model) {
+    public String lineupForm(@ModelAttribute MemberDTO memberDTO, @ModelAttribute MatchDTO matchDTO, HttpSession session, Model model) {
         Object getPlayername = session.getAttribute("loginUserid");
         Optional<MatchEntity> FindedUserName = matchRepository.findByPlayer((String) getPlayername);
         if (FindedUserName.isEmpty()) {
@@ -44,6 +45,9 @@ public class ListController {
         session.setAttribute("matchingLevelMax", lineupList.getListmax());
         session.setAttribute("matchingLevelMin", lineupList.getListmin());
         session.setAttribute("matchingParticipant", lineupList.getParticipant());
+        MatchDTO SubmitResult = matchService.MatchingSubmit((String) getPlayername, matchEntity.getGamenum());
+        session.setAttribute("matchingUserTeam", SubmitResult.getTeam());
+        System.out.println(SubmitResult.getTeam());
 
 
 
