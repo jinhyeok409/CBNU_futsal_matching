@@ -36,21 +36,21 @@
     <div class="main-contents">
         <ul class="matching-contents">
             <li >
-                <p >장소 : 충북대학교 스포츠센터 제1풋살구장</p>
+                <p  th:text= " '충북대 스포츠센터 제' + ${session.infonumber} +'풋살구장'"></p>
             </li>
             <li>
                 <p>시간 : 12월 01일 (금) 12:00 ~ 14:00</p>
             </li>
             <li>
-                <p th:text="'참여가능레벨 : ' + 'Level ' + ${session.match1listmin} +' ~ ' + 'Level '  + ${session.match1listmax}"></p>
+                <p th:text="'참여가능레벨 : ' + 'Level ' + ${session.infolistmin} +' ~ ' + 'Level '  + ${session.infolistmax}"></p>
             </li>
             <li>
-                <p th:text="|현재인원 : ${session.match1participant}명|"></p>
+                <p th:text="|현재인원 : ${session.infoparticipant}명|"></p>
             </li>
         </ul>
         <form method="post" action="/match/MatchVoting" id ="matching-form">
             <input type="submit" name = "match" value="상세인원"/>
-            <input type ="hidden" name = "test" th:value="${match}"/>
+            <input type ="hidden" name = "voting" th:value="${voting}"/>
         </form>
     </div>
     </li>

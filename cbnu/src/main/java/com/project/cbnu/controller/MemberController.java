@@ -109,6 +109,11 @@ public class MemberController {
         session.setAttribute("match4listmin", listService.ListLoad(4).getListmin());
         session.setAttribute("match4listmax", listService.ListLoad(4).getListmax());
         session.setAttribute("match4Number", listService.ListLoad(4).getGamelist());
+        model.addAttribute("matchinfo1",1);
+        model.addAttribute("matchinfo2",2);
+        model.addAttribute("matchinfo3",3);
+        model.addAttribute("matchinfo4",4);
+        model.addAttribute("matchend",100);
 
         return "MatchSetting";
     }
