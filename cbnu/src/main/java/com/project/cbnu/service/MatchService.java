@@ -34,17 +34,15 @@ public class MatchService {
 
     public MatchDTO MatchingSubmit(String UserId, Integer MatchNumber) {
 
-
         Optional<MatchEntity> byPlayer = matchRepository.findByPlayer(UserId);
 
-
         if (byPlayer.isPresent()) {
+
             MatchEntity matchEntity = byPlayer.get();
-            if (matchEntity.getGamenum().equals(MatchNumber)) {
+            if (matchEntity.getGamenum() == MatchNumber) {
 
                 MatchDTO dto = MatchDTO.toMatchDTO(matchEntity);
                 return dto;
-
             }
         }
 
@@ -52,5 +50,29 @@ public class MatchService {
 
 
     }
+    public MatchDTO AlreadyPresent(String UserId, Integer MatchNumber) {
+
+        Optional<MatchEntity> byPlayer = matchRepository.findByPlayer(UserId);
+
+        if (byPlayer.isPresent()) {
+            for (int i=1; i <5; i++){
+                MatchEntity matchEntity = byPlayer.get();
+                if (matchEntity.getGamenum().equals(i)) {
+
+                    MatchDTO dto = MatchDTO.toMatchDTO(matchEntity);
+                    return dto;
+
+                }
+
+            }
+
+
+        }
+
+        return null;
+
+    }
+
+
 
 }

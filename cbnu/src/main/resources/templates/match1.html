@@ -36,7 +36,7 @@
     <div class="main-contents">
         <ul class="matching-contents">
             <li >
-                <p>충북대 스포츠센터 제1풋살구장</p>
+                <p  th:text= " '충북대 스포츠센터 제' + ${session.infonumber} +'풋살구장'"></p>
             </li>
             <li>
                 <p>12월 01일 (금) 12:00 ~ 14:00</p>
@@ -45,10 +45,10 @@
                 <p id="a">남녀 모두</p>
                 <p >6vs6 2파전</p>
                 <p >풋살화/운동</p>
-                <p  th:text="${session.match1listmin} +' ~ ' + ${session.match1listmax} + 'level'"></p>
+                <p  th:text="'level : '+ ${session.infolistmin} +' ~ ' + ${session.infolistmax}"></p>
             </li>
             <li>
-                <p th:text="'신청인원 : '+ ${session.match1participant}+'/12'"></p>
+                <p th:text="'신청인원 : '+ ${session.infoparticipant}+'/12'"></p>
             </li>
             <div>
                 <form method="post" action="/match/match1" id ="matching-form">

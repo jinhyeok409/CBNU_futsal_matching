@@ -47,11 +47,16 @@
                 </div>
             </div>
             <div class="matchform-click">
-                <a href="../match/match1">
-                    매치신청</a>
-                <a href="../match/cancel1 ">
-                    매치취소
-                </a>
+                <form method="get" action="../match/match1" class="matchform-click">
+                    <input type="submit" name = "match" value="매치신청"/>
+                    <input type ="hidden" name = "matchnum" th:value="${match1}"/>
+                    <input type ="hidden" name = "canclenum" th:value="${match1}"/>
+                </form>
+                <form method="get" action="../match/match1" class="matchform-click">
+                    <input type="submit" name = "match" value="매치취소"/>
+                    <input type ="hidden" name = "matchnum" th:value="${match1}"/>
+                    <input type ="hidden" name = "canclenum" th:value="${matchcancle}"/>
+                </form>
             </div>
         </div>
         <div class="matchform">
@@ -67,11 +72,16 @@
                 </div>
             </div>
             <div class="matchform-click">
-                <a href="../match/match1">
-                    매치신청</a>
-                <a href="../match/cancel1 ">
-                    매치취소
-                </a>
+                <form method="get" action="../match/match1" class="matchform-click">
+                    <input type="submit" name = "match" value="매치신청"/>
+                    <input type ="hidden" name = "matchnum" th:value="${match2}"/>
+                    <input type ="hidden" name = "canclenum" th:value="${match2}"/>
+                </form>
+                <form method="get" action="../match/match1" class="matchform-click">
+                    <input type="submit" name = "match" value="매치취소"/>
+                    <input type ="hidden" name = "matchnum" th:value="${match2}"/>
+                    <input type ="hidden" name = "canclenum" th:value="${matchcancle}"/>
+                </form>
             </div>
         </div>
         <div class="matchform">
@@ -87,11 +97,16 @@
                 </div>
             </div>
             <div class="matchform-click">
-                <a href="../match/match1">
-                    매치신청</a>
-                <a href="../match/cancel1 ">
-                    매치취소
-                </a>
+                <form method="get" action="../match/match1" class="matchform-click">
+                    <input type="submit" name = "match" value="매치신청"/>
+                    <input type ="hidden" name = "matchnum" th:value="${match3}"/>
+                    <input type ="hidden" name = "canclenum" th:value="${match3}"/>
+                </form>
+                <form method="get" action="../match/match1" class="matchform-click">
+                    <input type="submit" name = "match" value="매치취소"/>
+                    <input type ="hidden" name = "matchnum" th:value="${match3}"/>
+                    <input type ="hidden" name = "canclenum" th:value="${matchcancle}"/>
+                </form>
             </div>
         </div>
         <div class="matchform">
@@ -107,11 +122,16 @@
                 </div>
             </div>
             <div class="matchform-click">
-                <a href="../match/match1">
-                    매치신청</a>
-                    <a href="../match/cancel1 ">
-                        매치취소
-                    </a>
+                <form method="get" action="../match/match1" class="matchform-click">
+                    <input type="submit" name = "match" value="매치신청"/>
+                    <input type ="hidden" name = "matchnum" th:value="${match4}"/>
+                    <input type ="hidden" name = "canclenum" th:value="${match4}"/>
+                </form>
+                <form method="get" action="../match/match1" class="matchform-click">
+                    <input type="submit" name = "match" value="매치취소"/>
+                    <input type ="hidden" name = "matchnum" th:value="${match4}"/>
+                    <input type ="hidden" name = "canclenum" th:value="${matchcancle}"/>
+                </form>
             </div>
         </div>
     </div>
