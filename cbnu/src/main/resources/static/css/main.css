@@ -216,7 +216,7 @@ main{
     color:white;
 }
 
-.matchform a
+.matchform input
 {
     background-color: rgb(146, 35, 78);
     text-decoration: none;
@@ -224,11 +224,12 @@ main{
     font-family: 'GmarketSansMedium';
     font-size: 20px;
     padding: 6px 20%;
+    border:none;
     border-radius: 10px;
     margin-top: 10px;
 
 }
-.matchform a:hover
+.matchform input:hover
 {
     background-color: white;
     color: rgb(146, 35, 78);
