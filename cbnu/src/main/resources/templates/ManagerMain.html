@@ -17,18 +17,18 @@
     <div id="main-navbar">
         <ul id="main-navbar-list">
             <li>
-                <a href="/member/main" class="navbar-section">
+                <a href="/member/ManagerMain">
                     <p>Home</p>
                 </a>
             </li>
             <li>
-                <a href="/member/matchinfo" class="navbar-section">
-                    <p>Match Info</p>
+                <a href="/member/MatchSetting">
+                    <p>Match Setting</p>
                 </a>
             </li>
             <li>
-                <a href="/member/usermanual" class="navbar-section">
-                    <p>User Manual</p>
+                <a href="/member/UserSetting">
+                    <p>User Setting</p>
                 </a>
             </li>
         </ul>
@@ -51,13 +51,8 @@
         </div>
     </div>
     <div id="main-bar1">
-        <div id="main-bar1-user">
+        <div id="main-bar1-manager">
             <div>
-                <div id="user-interface">
-                    <div>
-                        <img src="/img/userimage.png" alt="" />
-                    </div>
-                </div>
                 <div>
                     <p th:text="|레벨 ${session.loginUserlevel}|" class="user-interface-dept"></p>
                     <p th:text="${session.loginUserid}" class="user-interface-num"></p>
@@ -91,14 +86,6 @@
         </div>
     </div>
 </main>
-<div>
-    <header id="logo">
-        <div>
-            <h1>충북대학교 교내 풋살 매칭시스템</h1>
-            <h1>MATCHMATE</h1>
-        </div>
-    </header>
-</div>
 </body>
 </html>
 

@@ -17,18 +17,18 @@
     <div id="main-navbar">
         <ul id="main-navbar-list">
             <li>
-                <a href="/member/main">
+                <a href="/member/ManagerMain">
                     <p>Home</p>
                 </a>
             </li>
             <li>
-                <a href="/member/matchinfo">
-                    <p>Match Info</p>
+                <a href="/member/MatchSetting">
+                    <p>Match Setting</p>
                 </a>
             </li>
             <li>
-                <a href="/member/usermanual">
-                    <p>User Manual</p>
+                <a href="/member/UserSetting">
+                    <p>User Setting</p>
                 </a>
             </li>
         </ul>
@@ -47,15 +47,15 @@
                 </div>
             </div>
             <div class="matchform-click">
-                <form method="get" action="../match/match1" class="matchform-click">
-                    <input type="submit" name = "match" value="매치신청"/>
-                    <input type ="hidden" name = "matchnum" th:value="${match1}"/>
-                    <input type ="hidden" name = "canclenum" th:value="${match1}"/>
+                <form method="get" action="../match/Match1Setting" class="matchform-click">
+                    <input type="submit" name = "match" value="매치정보"/>
+                    <input type ="hidden" name = "matchinfo" th:value="${matchinfo1}"/>
+                    <input type ="hidden" name = "matchend" th:value="${matchinfo1}"/>
                 </form>
-                <form method="get" action="../match/match1" class="matchform-click">
-                    <input type="submit" name = "match" value="매치취소"/>
-                    <input type ="hidden" name = "matchnum" th:value="${match1}"/>
-                    <input type ="hidden" name = "canclenum" th:value="${matchcancle}"/>
+                <form method="get" action="../match/Match1Setting" class="matchform-click">
+                    <input type="submit" name = "match" value="매치종료"/>
+                    <input type ="hidden" name = "matchinfo" th:value="${matchinfo1}"/>
+                    <input type ="hidden" name = "matchend" th:value="${matchend}"/>
                 </form>
             </div>
         </div>
@@ -72,15 +72,15 @@
                 </div>
             </div>
             <div class="matchform-click">
-                <form method="get" action="../match/match1" class="matchform-click">
-                    <input type="submit" name = "match" value="매치신청"/>
-                    <input type ="hidden" name = "matchnum" th:value="${match2}"/>
-                    <input type ="hidden" name = "canclenum" th:value="${match2}"/>
+                <form method="get" action="../match/Match1Setting" class="matchform-click">
+                    <input type="submit" name = "match" value="매치정보"/>
+                    <input type ="hidden" name = "matchinfo" th:value="${matchinfo2}"/>
+                    <input type ="hidden" name = "matchend" th:value="${matchinfo2}"/>
                 </form>
-                <form method="get" action="../match/match1" class="matchform-click">
-                    <input type="submit" name = "match" value="매치취소"/>
-                    <input type ="hidden" name = "matchnum" th:value="${match2}"/>
-                    <input type ="hidden" name = "canclenum" th:value="${matchcancle}"/>
+                <form method="get" action="../match/Match1Setting" class="matchform-click">
+                    <input type="submit" name = "match" value="매치종료"/>
+                    <input type ="hidden" name = "matchinfo" th:value="${matchinfo2}"/>
+                    <input type ="hidden" name = "matchend" th:value="${matchend}"/>
                 </form>
             </div>
         </div>
@@ -97,15 +97,15 @@
                 </div>
             </div>
             <div class="matchform-click">
-                <form method="get" action="../match/match1" class="matchform-click">
-                    <input type="submit" name = "match" value="매치신청"/>
-                    <input type ="hidden" name = "matchnum" th:value="${match3}"/>
-                    <input type ="hidden" name = "canclenum" th:value="${match3}"/>
+                <form method="get" action="../match/Match1Setting" class="matchform-click">
+                    <input type="submit" name = "match" value="매치정보"/>
+                    <input type ="hidden" name = "matchinfo" th:value="${matchinfo3}"/>
+                    <input type ="hidden" name = "matchend" th:value="${matchinfo3}"/>
                 </form>
-                <form method="get" action="../match/match1" class="matchform-click">
-                    <input type="submit" name = "match" value="매치취소"/>
-                    <input type ="hidden" name = "matchnum" th:value="${match3}"/>
-                    <input type ="hidden" name = "canclenum" th:value="${matchcancle}"/>
+                <form method="get" action="../match/Match1Setting" class="matchform-click">
+                    <input type="submit" name = "match" value="매치종료"/>
+                    <input type ="hidden" name = "matchinfo" th:value="${matchinfo3}"/>
+                    <input type ="hidden" name = "matchend" th:value="${matchend}"/>
                 </form>
             </div>
         </div>
@@ -122,25 +122,22 @@
                 </div>
             </div>
             <div class="matchform-click">
-                <form method="get" action="../match/match1" class="matchform-click">
-                    <input type="submit" name = "match" value="매치신청"/>
-                    <input type ="hidden" name = "matchnum" th:value="${match4}"/>
-                    <input type ="hidden" name = "canclenum" th:value="${match4}"/>
+                <form method="get" action="../match/Match1Setting" class="matchform-click">
+                    <input type="submit" name = "match" value="매치정보"/>
+                    <input type ="hidden" name = "matchinfo" th:value="${matchinfo4}"/>
+                    <input type ="hidden" name = "matchend" th:value="${matchinfo4}"/>
                 </form>
-                <form method="get" action="../match/match1" class="matchform-click">
-                    <input type="submit" name = "match" value="매치취소"/>
-                    <input type ="hidden" name = "matchnum" th:value="${match4}"/>
-                    <input type ="hidden" name = "canclenum" th:value="${matchcancle}"/>
+                <form method="get" action="../match/Match1Setting" class="matchform-click">
+                    <input type="submit" name = "match" value="매치종료"/>
+                    <input type ="hidden" name = "matchinfo" th:value="${matchinfo4}"/>
+                    <input type ="hidden" name = "matchend" th:value="${matchend}"/>
                 </form>
             </div>
         </div>
     </div>
     <div id="main-bar1">
-        <div id="main-bar1-user">
+        <div id="main-bar1-manager">
             <div>
-                <div id="user-interface"> <div>
-                    <img src="/img/userimage.png" alt="" />
-                </div></div>
                 <div>
                     <p th:text="|레벨 ${session.loginUserlevel}|" class="user-interface-dept"></p>
                     <p th:text="${session.loginUserid}" class="user-interface-num"></p>

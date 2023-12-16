@@ -17,47 +17,46 @@
     <div id="main-navbar">
         <ul id="main-navbar-list">
             <li>
-                <a href="/member/main" class="navbar-section">
+                <a href="/member/ManagerMain">
                     <p>Home</p>
                 </a>
             </li>
             <li>
-                <a href="/member/matchinfo" class="navbar-section">
-                    <p>Match Info</p>
+                <a href="/member/MatchSetting">
+                    <p>Match Setting</p>
                 </a>
             </li>
             <li>
-                <a href="/member/usermanual" class="navbar-section">
-                    <p>User Manual</p>
+                <a href="/member/UserSetting">
+                    <p>User Setting</p>
                 </a>
             </li>
         </ul>
     </div>
-    <div class="main-welcome">
-        <div class="welcome-section">
-            <div>
-                <img src="/img/cbnu_logo.png" id="cbnu_logo_img" alt="" />
-            </div>
-            <div class="description">
-                <div>충북대학교 풋살 매칭 플렛폼</div>
-                <div>MATCHMATE</div>
-            </div>
-            <div class="publisher">
-                <div>김문호</div>
-                <div>김진혁</div>
-                <div>주예훈</div>
-                <div>PIAOZHEZUN</div>
-            </div>
-        </div>
+    <div class="main-contents">
+        <ul class="matching-contents">
+            <li >
+                <p  th:text= " '충북대 스포츠센터 제' + ${session.infonumber} +'풋살구장'"></p>
+            </li>
+            <li>
+                <p>시간 : 12월 01일 (금) 12:00 ~ 14:00</p>
+            </li>
+            <li>
+                <p th:text="'참여가능레벨 : ' + 'Level ' + ${session.infolistmin} +' ~ ' + 'Level '  + ${session.infolistmax}"></p>
+            </li>
+            <li>
+                <p th:text="|현재인원 : ${session.infoparticipant}명|"></p>
+            </li>
+        </ul>
+        <form method="post" action="/match/MatchVoting" id ="matching-form">
+            <input type="submit" name = "match" value="상세인원"/>
+            <input type ="hidden" name = "voting" th:value="${voting}"/>
+        </form>
     </div>
+    </li>
     <div id="main-bar1">
-        <div id="main-bar1-user">
+        <div id="main-bar1-manager">
             <div>
-                <div id="user-interface">
-                    <div>
-                        <img src="/img/userimage.png" alt="" />
-                    </div>
-                </div>
                 <div>
                     <p th:text="|레벨 ${session.loginUserlevel}|" class="user-interface-dept"></p>
                     <p th:text="${session.loginUserid}" class="user-interface-num"></p>
@@ -91,14 +90,6 @@
         </div>
     </div>
 </main>
-<div>
-    <header id="logo">
-        <div>
-            <h1>충북대학교 교내 풋살 매칭시스템</h1>
-            <h1>MATCHMATE</h1>
-        </div>
-    </header>
-</div>
 </body>
 </html>
 

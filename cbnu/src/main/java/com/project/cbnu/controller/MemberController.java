@@ -45,22 +45,82 @@ public class MemberController {
     }
 
     @GetMapping ("/member/matchinfo")
-    public String ParticipantCheck(@ModelAttribute MemberDTO memberDTO,@ModelAttribute ListDTO listDTO, Model model, HttpSession session){
+    public String matchinfoForm(@ModelAttribute MemberDTO memberDTO,@ModelAttribute ListDTO listDTO, Model model, HttpSession session){
 
-        // 객체선언 해서 플레이어 네임을 getPlayername에 변수를 지정하여 넣음
-        // Integer MatchNumber = 1;
-        // session.setAttribute("participant", listService.ListCount(listDTO, MatchNumber).getParticipant());
+
+        session.setAttribute("match1participant", listService.ListLoad(1).getParticipant());
+        session.setAttribute("match1listmin", listService.ListLoad(1).getListmin());
+        session.setAttribute("match1listmax", listService.ListLoad(1).getListmax());
+        session.setAttribute("match1Number", listService.ListLoad(1).getGamelist());
+        session.setAttribute("match2participant", listService.ListLoad(2).getParticipant());
+        session.setAttribute("match2listmin", listService.ListLoad(2).getListmin());
+        session.setAttribute("match2listmax", listService.ListLoad(2).getListmax());
+        session.setAttribute("match2Number", listService.ListLoad(2).getGamelist());
+        session.setAttribute("match3participant", listService.ListLoad(3).getParticipant());
+        session.setAttribute("match3listmin", listService.ListLoad(3).getListmin());
+        session.setAttribute("match3listmax", listService.ListLoad(3).getListmax());
+        session.setAttribute("match3Number", listService.ListLoad(3).getGamelist());
+        session.setAttribute("match4participant", listService.ListLoad(4).getParticipant());
+        session.setAttribute("match4listmin", listService.ListLoad(4).getListmin());
+        session.setAttribute("match4listmax", listService.ListLoad(4).getListmax());
+        session.setAttribute("match4Number", listService.ListLoad(4).getGamelist());
+        model.addAttribute("match1",1);
+        model.addAttribute("match2",2);
+        model.addAttribute("match3",3);
+        model.addAttribute("match4",4);
+        model.addAttribute("matchcancle",100);
         return "matchinfo";
     }
 
+//    @PostMapping ("/member/matchinfo")
+//    public String MatchInfo(@RequestParam(value="matchnum") String Number){
+//        System.out.println(Number);
+//        System.out.println("1");
+//        return "/match/match1";
+//    }
 
     @GetMapping ("/member/usermanual")
     public String usermanualForm() {
         return "usermanual";
     }
 
+    @GetMapping ("/member/ManagerMain")
+    public String ManagerMainForm() {
+        return "ManagerMain";
+    }
+
+    @GetMapping ("/member/MatchSetting")
+    public String MatchSettingForm(@ModelAttribute MemberDTO memberDTO,@ModelAttribute ListDTO listDTO, Model model, HttpSession session){
 
 
+        session.setAttribute("match1participant", listService.ListLoad(1).getParticipant());
+        session.setAttribute("match1listmin", listService.ListLoad(1).getListmin());
+        session.setAttribute("match1listmax", listService.ListLoad(1).getListmax());
+        session.setAttribute("match1Number", listService.ListLoad(1).getGamelist());
+        session.setAttribute("match2participant", listService.ListLoad(2).getParticipant());
+        session.setAttribute("match2listmin", listService.ListLoad(2).getListmin());
+        session.setAttribute("match2listmax", listService.ListLoad(2).getListmax());
+        session.setAttribute("match2Number", listService.ListLoad(2).getGamelist());
+        session.setAttribute("match3participant", listService.ListLoad(3).getParticipant());
+        session.setAttribute("match3listmin", listService.ListLoad(3).getListmin());
+        session.setAttribute("match3listmax", listService.ListLoad(3).getListmax());
+        session.setAttribute("match3Number", listService.ListLoad(3).getGamelist());
+        session.setAttribute("match4participant", listService.ListLoad(4).getParticipant());
+        session.setAttribute("match4listmin", listService.ListLoad(4).getListmin());
+        session.setAttribute("match4listmax", listService.ListLoad(4).getListmax());
+        session.setAttribute("match4Number", listService.ListLoad(4).getGamelist());
+        model.addAttribute("matchinfo1",1);
+        model.addAttribute("matchinfo2",2);
+        model.addAttribute("matchinfo3",3);
+        model.addAttribute("matchinfo4",4);
+        model.addAttribute("matchend",100);
+
+        return "MatchSetting";
+    }
+    @GetMapping ("/member/UserSetting")
+    public String UserSettingForm() {
+        return "UserSetting";
+    }
 
     @GetMapping ("/member/login")
     public String loginForm() {
@@ -71,7 +131,6 @@ public class MemberController {
     @PostMapping("/member/login")
     public String login(@ModelAttribute MemberDTO memberDTO, Model model, HttpSession session){
         MemberDTO loginResult = memberService.login(memberDTO);
-
 
 
         if (loginResult != null){
@@ -106,6 +165,11 @@ public class MemberController {
             session.setAttribute("votedcount", loginResult.getVoted());
             // loginResult를 변경했기 때문에 save(loginResult) 사용
             memberService.save(loginResult);
+
+            if(loginResult.getUserid().equals("manager")) {
+                System.out.println("성공");
+                return "ManagerMain";
+            }
 
 
             return "firstmain";
